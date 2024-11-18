@@ -6,10 +6,8 @@ SDLWindow::~SDLWindow() {
     close();
 }
 
-bool SDLWindow::initialize() {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        return false;
-    }
+bool SDLWindow::initialize() 
+{
     return true;
 }
 

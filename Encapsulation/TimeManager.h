@@ -2,18 +2,17 @@
 
 class TimeManager {
 public:
-	// Singleton instance access
+	// Singleton instance
 	static TimeManager& Instance()
 	{
 		static TimeManager instance;
 		return instance;
 	}
 
-	// Delete copy/move constructors
 	TimeManager(const TimeManager&) = delete;
 	TimeManager& operator=(const TimeManager&) = delete;
 
-	// Update delta time
+	// Update du DeltaTime
 	void Update()
 	{
 		auto currentTimePoint = std::chrono::high_resolution_clock::now();
@@ -22,14 +21,14 @@ public:
 		lastTimePoint = currentTimePoint;
 	}
 
-	// Get delta time
+	// Get DeltaTime
 	double GetDeltaTime() const
 	{
 		return deltaTime;
 	}
 
 private:
-	// Private constructor for Singleton
+	// Constructeur privé pour le Singleton
 	TimeManager()
 	{
 		lastTimePoint = std::chrono::high_resolution_clock::now();

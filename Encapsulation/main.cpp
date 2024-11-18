@@ -4,8 +4,9 @@
 #include "SDLWindow.h"
 #include "RaylibWindow.h"
 
+#define USE_SDL false
 
-#ifdef USE_SDL false
+#if USE_SDL
 using CurrentWindow = SDLWindow;
 #define TITLE "SDL"
 #else

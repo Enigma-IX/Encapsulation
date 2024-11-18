@@ -3,7 +3,7 @@
 #include <stdexcept>
 #include <iostream>
 
-SDLText::SDLText(const std::string& fontPath, int fontSize)
+SDLText::SDLText(SDL_Renderer* renderer, const std::string& fontPath, int fontSize)
 	: renderer(renderer), texture(nullptr) {
 	if (TTF_Init() == -1) {
 		throw std::runtime_error("Erreur d'initialisation de TTF : " + std::string(TTF_GetError()));

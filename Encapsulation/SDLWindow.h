@@ -25,4 +25,6 @@ public:
     void drawText(const std::string& fontPath, int fontSize) override;
     void display() override;
     void close() override;
+
+	SDL_Renderer* getRenderer() const { return renderer; }
 };

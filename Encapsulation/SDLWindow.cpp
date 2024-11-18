@@ -50,7 +50,9 @@ void SDLWindow::drawCircle(float x, float y, float radius) {
 
 void SDLWindow::drawText(const std::string& fontPath, int fontSize)
 {
-    SDLText text(fontPath, fontSize);
+    SDLText text(renderer, fontPath, fontSize);
+	text.setPosition(100, 100);
+	text.loadText("Bienvenue ! ");
     text.render();
 }
 

@@ -34,7 +34,9 @@ void RaylibWindow::drawCircle(float x, float y, float radius) {
 
 void RaylibWindow::drawText(const std::string& fontPath, int fontSize)
 {
-    RaylibText text("Montserrat-Regular.ttf", 24);
+    RaylibText text(fontPath, fontSize);
+	text.setPosition(100, 100);
+	text.loadText("Bienvenue ! ");
     text.render();
 }
 

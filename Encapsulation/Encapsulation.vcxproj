@@ -158,6 +158,7 @@
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="framework.h" />
     <ClInclude Include="RaylibSprite.h" />
     <ClInclude Include="RaylibWindow.h" />
     <ClInclude Include="SDLSprite.h" />

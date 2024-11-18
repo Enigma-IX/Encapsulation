@@ -35,6 +35,8 @@ int main(int argc, char* argv[])
 
     float x = WIN_WIDTH/2, y = WIN_HEIGHT/2, dx = 500.0f, dy = 400.0f, radius = 20; // TO DO: Gerer ca avec dans les classes sprite
 
+
+    // TO DO: Gerer ca ailleur
     CurrentText text("Montserrat-Regular.ttf", 24);
     text.setPosition(100, 100);
     text.loadText(std::string("Bienvenue sur :  ") + TITLE);
@@ -60,7 +62,7 @@ int main(int argc, char* argv[])
         if (y - radius < 0 || y + radius > WIN_HEIGHT) dy = -dy;
 
         window.drawCircle(x, y, radius);
-        text.render();
+        text.render(); // TO DO: faire ca avec window.drawText();
         window.display();
     }
 

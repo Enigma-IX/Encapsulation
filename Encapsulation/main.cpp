@@ -5,13 +5,15 @@
 #include "RaylibWindow.h"
 
 
-#define USE_SDL false
+#define USE_SDL true
 
 #if USE_SDL
 using CurrentWindow = SDLWindow;
 #else
 using CurrentWindow = RaylibWindow;
 #endif
+
+
 
 int main(int argc, char* argv[])
 {
@@ -24,17 +26,17 @@ int main(int argc, char* argv[])
 
     float x = 400, y = 300, dx = 2.5f, dy = 2.0f, radius = 20; // TO DO: Gerer ca avec dans les classes sprite
 
-    SDL_Event event;
+    SDL_Event event; // TO DO: Gerer ca ailleur
     while (window.isOpen())
     {
-        while (SDL_PollEvent(&event))
+        // TO DO: Gerer ca ailleur
+        SDL_PollEvent(&event);
+        if (event.type == SDL_QUIT)
         {
-            if (event.type == SDL_QUIT) 
-            {
-                window.close();
-                break;
-            }
+            break;
         }
+
+
         window.clear();
 
         // TO DO: Gerer ca avec dans les classes sprite  (Logique de rebonsissement)

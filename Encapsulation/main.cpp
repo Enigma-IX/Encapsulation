@@ -8,6 +8,7 @@
 
 #define USE_SDL true
 
+
 #if USE_SDL
 using CurrentWindow = SDLWindow;
 #define TITLE "SDL"

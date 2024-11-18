@@ -1,5 +1,7 @@
 #include "RaylibWindow.h"
 
+#include "RaylibText.h"
+
 RaylibWindow::RaylibWindow() : open(false) {}
 
 RaylibWindow::~RaylibWindow() {
@@ -28,6 +30,12 @@ void RaylibWindow::clear() {
 void RaylibWindow::drawCircle(float x, float y, float radius) {
     // TO DO: gerer ca dans Sprite
     DrawCircle(static_cast<int>(x), static_cast<int>(y), radius, WHITE);
+}
+
+void RaylibWindow::drawText(const std::string& fontPath, int fontSize)
+{
+    RaylibText text("Montserrat-Regular.ttf", 24);
+    text.render();
 }
 
 void RaylibWindow::display() {

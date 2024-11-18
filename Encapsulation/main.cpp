@@ -4,15 +4,21 @@
 #include "SDLWindow.h"
 #include "RaylibWindow.h"
 
+#include "SDLText.h"
+#include "RaylibText.h"
+
 #include "TimeManager.h"
 
-#define USE_SDL true
+#define USE_SDL false
 
 #if USE_SDL
 using CurrentWindow = SDLWindow;
+using CurrentText = SDLText;
 #define TITLE "SDL"
 #else
 using CurrentWindow = RaylibWindow;
+using CurrentText = RaylibText;
+
 #define TITLE "Raylib"
 #endif
 
@@ -29,6 +35,10 @@ int main(int argc, char* argv[])
 
     float x = WIN_WIDTH/2, y = WIN_HEIGHT/2, dx = 500.0f, dy = 400.0f, radius = 20; // TO DO: Gerer ca avec dans les classes sprite
 
+    CurrentText text("Montserrat-Regular.ttf", 24);
+    text.setPosition(100, 100);
+    text.loadText(std::string("Bienvenue sur :  ") + TITLE);
+
     SDL_Event event; // TO DO: Gerer ca ailleur
     while (window.isOpen())
     {
@@ -41,7 +51,6 @@ int main(int argc, char* argv[])
 
         TimeManager::Instance().Update();
 
-
         window.clear();
 
         // TO DO: Gerer ca avec dans les classes sprite  (Logique de rebonsissement)
@@ -51,6 +60,7 @@ int main(int argc, char* argv[])
         if (y - radius < 0 || y + radius > WIN_HEIGHT) dy = -dy;
 
         window.drawCircle(x, y, radius);
+        text.render();
         window.display();
     }
 

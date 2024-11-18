@@ -1,5 +1,7 @@
 #include "SDLWindow.h"
 
+#include "SDLText.h"
+
 SDLWindow::SDLWindow() : window(nullptr), renderer(nullptr), open(false) {}
 
 SDLWindow::~SDLWindow() {
@@ -44,6 +46,12 @@ void SDLWindow::drawCircle(float x, float y, float radius) {
             }
         }
     }
+}
+
+void SDLWindow::drawText(const std::string& fontPath, int fontSize)
+{
+    SDLText text(fontPath, fontSize);
+    text.render();
 }
 
 void SDLWindow::display() {

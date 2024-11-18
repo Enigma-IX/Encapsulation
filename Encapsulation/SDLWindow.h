@@ -5,6 +5,8 @@
 #include "Window.h"
 #include <SDL.h>
 
+#include <string>
+
 class SDLWindow : public Window {
 private:
     SDL_Window* window;
@@ -20,6 +22,7 @@ public:
     bool isOpen() override;
     void clear() override;
     void drawCircle(float x, float y, float radius) override;
+    void drawText(const std::string& fontPath, int fontSize) override;
     void display() override;
     void close() override;
 };

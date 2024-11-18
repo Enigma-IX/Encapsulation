@@ -151,20 +151,26 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RaylibSprite.cpp" />
+    <ClCompile Include="RaylibText.cpp" />
     <ClCompile Include="RaylibWindow.cpp" />
     <ClCompile Include="SDLSprite.cpp" />
+    <ClCompile Include="SDLText.cpp" />
     <ClCompile Include="SDLWindow.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="RaylibSprite.h" />
+    <ClInclude Include="RaylibText.h" />
     <ClInclude Include="RaylibWindow.h" />
     <ClInclude Include="SDLSprite.h" />
+    <ClInclude Include="SDLText.h" />
     <ClInclude Include="SDLWindow.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

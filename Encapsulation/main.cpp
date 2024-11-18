@@ -5,12 +5,12 @@
 #include "RaylibWindow.h"
 
 
-#define USE_SDL true
-
-#if USE_SDL
+#ifdef USE_SDL false
 using CurrentWindow = SDLWindow;
+#define TITLE "SDL"
 #else
 using CurrentWindow = RaylibWindow;
+#define TITLE "Raylib"
 #endif
 
 
@@ -18,7 +18,7 @@ using CurrentWindow = RaylibWindow;
 int main(int argc, char* argv[])
 {
     CurrentWindow window;
-    if (!window.initialize() || !window.createWindow(WIN_WIDTH, WIN_HEIGHT, "Encapsulation")) 
+    if (!window.initialize() || !window.createWindow(WIN_WIDTH, WIN_HEIGHT, TITLE)) 
     {
         std::cerr << "Failed to initialize window!" << std::endl;
         return -1;

@@ -3,37 +3,18 @@
 class TimeManager {
 public:
 	// Singleton instance
-	static TimeManager& Instance()
-	{
-		static TimeManager instance;
-		return instance;
-	}
+	static TimeManager& Instance();
 
 	TimeManager(const TimeManager&) = delete;
 	TimeManager& operator=(const TimeManager&) = delete;
 
-	// Update du DeltaTime
-	void Update()
-	{
-		auto currentTimePoint = std::chrono::high_resolution_clock::now();
-		std::chrono::duration<double> elapsedTime = currentTimePoint - lastTimePoint;
-		deltaTime = elapsedTime.count();
-		lastTimePoint = currentTimePoint;
-	}
+	void Update();
 
-	// Get DeltaTime
-	double GetDeltaTime() const
-	{
-		return deltaTime;
-	}
+	double GetDeltaTime() const { return deltaTime; }
 
 private:
 	// Constructeur privé pour le Singleton
-	TimeManager()
-	{
-		lastTimePoint = std::chrono::high_resolution_clock::now();
-		deltaTime = 0.0;
-	}
+	TimeManager();
 
 	std::chrono::high_resolution_clock::time_point lastTimePoint;
 	double deltaTime;

@@ -4,8 +4,12 @@
 #include "SDLWindow.h"
 #include "RaylibWindow.h"
 
+#include "TimeManager.h"
 
-#ifdef USE_SDL false
+#define USE_SDL true
+
+
+#if USE_SDL
 using CurrentWindow = SDLWindow;
 #define TITLE "SDL"
 #else
@@ -24,7 +28,7 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    float x = 400, y = 300, dx = 2.5f, dy = 2.0f, radius = 20; // TO DO: Gerer ca avec dans les classes sprite
+    float x = WIN_WIDTH/2, y = WIN_HEIGHT/2, dx = 500.0f, dy = 400.0f, radius = 20; // TO DO: Gerer ca avec dans les classes sprite
 
     SDL_Event event; // TO DO: Gerer ca ailleur
     while (window.isOpen())
@@ -36,12 +40,14 @@ int main(int argc, char* argv[])
             break;
         }
 
+        TimeManager::Instance().Update();
+
 
         window.clear();
 
         // TO DO: Gerer ca avec dans les classes sprite  (Logique de rebonsissement)
-        x += dx;
-        y += dy;
+        x += dx * TimeManager::Instance().GetDeltaTime();
+        y += dy * TimeManager::Instance().GetDeltaTime();
         if (x - radius < 0 || x + radius > WIN_WIDTH) dx = -dx;
         if (y - radius < 0 || y + radius > WIN_HEIGHT) dy = -dy;
 

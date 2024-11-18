@@ -71,16 +71,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)\SDL2\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\SDL_Image\include;$(ProjectDir)\SDL2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\SDL_Image\lib;$(ProjectDir)\SDL2\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(ProjectDir)..\SDL2-2.30.9\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(ProjectDir)..\SDL2-2.30.9\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)\SDL2\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)\SDL_Image\include;$(ProjectDir)\SDL2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\SDL_Image\lib;$(ProjectDir)\SDL2\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(ProjectDir)..\SDL2-2.30.9\include;$(IncludePath)</IncludePath>
@@ -92,13 +92,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\SDL2\include;$(ProjectDir)\raylib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\SDL_Image\include;$(ProjectDir)\SDL2\include;$(ProjectDir)\raylib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;raylib.lib;raylibdll.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)\SDL2\lib;$(ProjectDir)\raylib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;raylib.lib;raylibdll.lib;winmm.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\SDL_Image\lib;$(ProjectDir)\SDL2\lib;$(ProjectDir)\raylib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -123,13 +123,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\SDL2\include;$(ProjectDir)\raylib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\SDL_Image\include;$(ProjectDir)\SDL2\include;$(ProjectDir)\raylib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;raylib.lib;raylibdll.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)\SDL2\lib;$(ProjectDir)\raylib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;raylib.lib;raylibdll.lib;winmm.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\SDL_Image\lib;$(ProjectDir)\SDL2\lib;$(ProjectDir)\raylib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -151,19 +151,27 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RaylibSprite.cpp" />
+    <ClCompile Include="RaylibText.cpp" />
     <ClCompile Include="RaylibWindow.cpp" />
     <ClCompile Include="SDLSprite.cpp" />
+    <ClCompile Include="SDLText.cpp" />
     <ClCompile Include="SDLWindow.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="RaylibSprite.h" />
+    <ClInclude Include="RaylibText.h" />
     <ClInclude Include="RaylibWindow.h" />
     <ClInclude Include="SDLSprite.h" />
+    <ClInclude Include="SDLText.h" />
     <ClInclude Include="SDLWindow.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -39,10 +39,10 @@ void RaylibWindow::close() {
 }
 
 void RaylibWindow::drawSprite(const Sprite& sprite) {
-    // Rï¿½cupï¿½ration de la position du sprite
+    // Récupération de la position du sprite
     std::pair<float, float> position = sprite.GetPosition();
 
-    // Appel ï¿½ la mï¿½thode Draw de l'implï¿½mentation spï¿½cifique (RaylibSprite)
+    // Appel à la méthode Draw de l'implémentation spécifique (RaylibSprite)
     sprite.Draw(position.first, position.second);
 }
 

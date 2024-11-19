@@ -23,7 +23,7 @@ int main() {
 
     // Création du sprite via la méthode polymorphe
     Sprite* sprite = window.createSprite();
-    if (!sprite->LoadImage("D:/Cours4/Projet3/Encapsulation/bob_leponge")) {
+    if (!sprite->LoadImage("ball.png")) {
         std::cerr << "Failed to load sprite image!" << std::endl;
         delete sprite;
         return -1;

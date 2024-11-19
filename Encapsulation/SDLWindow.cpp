@@ -9,10 +9,6 @@ SDLWindow::~SDLWindow() {
 }
 
 bool SDLWindow::initialize() {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        std::cerr << "SDL Initialization Failed!" << std::endl;
-        return false;
-    }
     return true;
 }
 

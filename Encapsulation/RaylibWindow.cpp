@@ -1,4 +1,6 @@
 #include "RaylibWindow.h"
+#include "RaylibSprite.h"
+#include <iostream>
 
 RaylibWindow::RaylibWindow() : open(false) {}
 
@@ -25,18 +27,25 @@ void RaylibWindow::clear() {
     ClearBackground(BLACK);
 }
 
-void RaylibWindow::drawCircle(float x, float y, float radius) {
-    // TO DO: gerer ca dans Sprite
-    DrawCircle(static_cast<int>(x), static_cast<int>(y), radius, WHITE);
-}
-
 void RaylibWindow::display() {
     EndDrawing();
 }
 
-void RaylibWindow::close() {    
+void RaylibWindow::close() {
     if (open) {
         CloseWindow();
         open = false;
     }
+}
+
+void RaylibWindow::drawSprite(const Sprite& sprite) {
+    // R�cup�ration de la position du sprite
+    std::pair<float, float> position = sprite.GetPosition();
+
+    // Appel � la m�thode Draw de l'impl�mentation sp�cifique (RaylibSprite)
+    sprite.Draw(position.first, position.second);
+}
+
+Sprite* RaylibWindow::createSprite() {
+    return new RaylibSprite();
 }

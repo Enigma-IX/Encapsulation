@@ -33,12 +33,10 @@ void* SDLSprite::GetData() const {
 }
 
 void SDLSprite::Draw(float x, float y) const {
-    if (!texture) {
-        return;
+    if (texture) {
+        SDL_Rect rect = { static_cast<int>(x), static_cast<int>(y), static_cast<int>(width), static_cast<int>(height) };
+        SDL_RenderCopy(renderer, texture, nullptr, &rect);
     }
-
-    SDL_Rect rect = { static_cast<int>(x), static_cast<int>(y), 50, 50 };
-    SDL_RenderCopy(renderer, texture, nullptr, &rect);
 }
 
 void SDLSprite::SetPosition(float x, float y) {
@@ -48,4 +46,13 @@ void SDLSprite::SetPosition(float x, float y) {
 
 std::pair<float, float> SDLSprite::GetPosition() const {
     return { positionX, positionY };
+}
+
+void SDLSprite::SetSize(float width, float height) {
+    this->width = width;
+    this->height = height;
+}
+
+std::pair<float, float> SDLSprite::GetSize() const {
+    return { width, height };
 }

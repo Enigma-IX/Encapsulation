@@ -8,6 +8,7 @@
 
 #include "SDLText.h"
 #include "RaylibText.h"
+#include "Ball.h"
 
 
 class GameManager
@@ -16,8 +17,10 @@ private:
 	static GameManager* instance;  // Singleton instance
 
 	CurrentWindow window;
-	Sprite* sprite;
+	//Sprite* sprite;
 	Text* text;
+	Ball* ball;
+	TimeManager timeManager;
 
 	GameManager(); // Constructeur privé
 

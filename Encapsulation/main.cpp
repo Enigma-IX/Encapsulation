@@ -1,3 +1,5 @@
+#define SDL_MAIN_HANDLED
+
 #include <iostream>
 #include "framework.h"
 
@@ -9,7 +11,7 @@
 
 #include "TimeManager.h"
 
-#define USE_SDL true // Basculer entre SDL et Raylib � la compilation
+#define USE_SDL false // Basculer entre SDL et Raylib
 
 #if USE_SDL
 using CurrentWindow = SDLWindow;

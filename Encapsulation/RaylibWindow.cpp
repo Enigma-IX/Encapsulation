@@ -17,7 +17,6 @@ bool RaylibWindow::initialize() {
 bool RaylibWindow::createWindow(int width, int height, const char* title) {
     SetConfigFlags(FLAG_WINDOW_HIGHDPI);
     InitWindow(width, height, title);
-    SetWindowSize(width, height);
     open = !WindowShouldClose();
     return open;
 }

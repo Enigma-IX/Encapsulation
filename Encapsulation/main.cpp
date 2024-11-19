@@ -34,7 +34,15 @@ int main() {
     float dx = 200.0f, dy = 150.0f;
     sprite->SetPosition(x, y);
 
+    SDL_Event event;
     while (window.isOpen()) {
+
+        SDL_PollEvent(&event);
+        if (event.type == SDL_QUIT)
+        {
+            break;
+        }
+
         TimeManager::Instance().Update();
         float deltaTime = TimeManager::Instance().GetDeltaTime();
 

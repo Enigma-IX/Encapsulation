@@ -12,5 +12,5 @@ public:
     virtual void display() = 0;
     virtual void close() = 0;
     virtual void drawSprite(const Sprite& sprite) = 0;
-    virtual Sprite* createSprite() = 0; // Méthode pure virtuelle
+    virtual Sprite* createSprite() = 0; 
 };

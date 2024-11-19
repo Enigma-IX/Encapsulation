@@ -32,11 +32,9 @@ void RaylibWindow::drawCircle(float x, float y, float radius) {
     DrawCircle(static_cast<int>(x), static_cast<int>(y), radius, WHITE);
 }
 
-void RaylibWindow::drawText(const std::string& fontPath, int fontSize)
+
+void RaylibWindow::drawText(const Text& text)
 {
-    RaylibText text(fontPath, fontSize);
-	text.setPosition(100, 100);
-	text.loadText("Bienvenue ! ");
     text.render();
 }
 
@@ -49,4 +47,9 @@ void RaylibWindow::close() {
         CloseWindow();
         open = false;
     }
+}
+
+Text* RaylibWindow::createText()
+{
+    return new RaylibText();
 }

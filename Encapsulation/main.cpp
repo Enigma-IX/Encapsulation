@@ -9,7 +9,7 @@
 
 #include "TimeManager.h"
 
-#define USE_SDL false
+#define USE_SDL true
 
 #if USE_SDL
 using CurrentWindow = SDLWindow;
@@ -32,7 +32,19 @@ int main(int argc, char* argv[])
         return -1;
     }
 
+
+    Text* text = window.createText();
+    if (!text->loadFont("Montserrat-Regular.ttf", 24))
+    {
+        delete text;
+        return -1;
+    }
+
     float x = WIN_WIDTH/2, y = WIN_HEIGHT/2, dx = 500.0f, dy = 400.0f, radius = 20; // TO DO: Gerer ca avec dans les classes sprite
+	text->setPosition(100, 100);
+	text->loadText("Bienvenue");
+
+
 
 
     SDL_Event event; // TO DO: Gerer ca ailleur
@@ -56,7 +68,7 @@ int main(int argc, char* argv[])
         if (y - radius < 0 || y + radius > WIN_HEIGHT) dy = -dy;
 
         window.drawCircle(x, y, radius);
-        window.drawText("Montserrat-Regular.ttf", 24);
+        window.drawText(*text);
         window.display();
     }
 

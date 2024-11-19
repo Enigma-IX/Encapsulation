@@ -3,15 +3,20 @@
 #include <stdexcept>
 
 
-RaylibText::RaylibText(const std::string& fontPath, int fontSize) : color(WHITE) {
-	font = LoadFontEx(fontPath.c_str(), fontSize, nullptr, 0);
-	if (!font.texture.id) {
-		throw std::runtime_error("Erreur lors du chargement de la police : " + fontPath);
-	}
-}
+RaylibText::RaylibText() : color(WHITE) {}
 
 RaylibText::~RaylibText() {
 	UnloadFont(font);
+}
+
+bool RaylibText::loadFont(const std::string& fontPath, int fontSize)
+{
+	font = LoadFontEx(fontPath.c_str(), fontSize, nullptr, 0);
+	if (!font.texture.id) {
+		throw std::runtime_error("Erreur lors du chargement de la police : " + fontPath);
+		return false;
+	}
+	return true;
 }
 
 void RaylibText::loadText(const std::string& text) {

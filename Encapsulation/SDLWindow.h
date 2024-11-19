@@ -22,9 +22,11 @@ public:
     bool isOpen() override;
     void clear() override;
     void drawCircle(float x, float y, float radius) override;
-    void drawText(const std::string& fontPath, int fontSize) override;
     void display() override;
     void close() override;
+
+    void drawText(const Text& text) override;
+    Text* createText() override;
 
 	SDL_Renderer* getRenderer() const { return renderer; }
 };

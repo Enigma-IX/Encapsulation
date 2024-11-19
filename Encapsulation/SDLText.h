@@ -14,9 +14,10 @@ private:
 	std::string loadedText;
 
 public:
-	SDLText(SDL_Renderer* renderer, const std::string& fontPath, int fontSize);
+	SDLText(SDL_Renderer* renderer);
 	~SDLText();
 
+	bool loadFont(const std::string& fontPath, int fontSize);
 	void loadText(const std::string& text) override;
 	void render() const override;
 };

@@ -3,16 +3,8 @@
 #include <stdexcept>
 #include <iostream>
 
-SDLText::SDLText(SDL_Renderer* renderer, const std::string& fontPath, int fontSize)
-	: renderer(renderer), texture(nullptr) {
-	if (TTF_Init() == -1) {
-		throw std::runtime_error("Erreur d'initialisation de TTF : " + std::string(TTF_GetError()));
-	}
-	font = TTF_OpenFont(fontPath.c_str(), fontSize);
-	if (!font) {
-		throw std::runtime_error("Erreur lors du chargement de la police : " + std::string(TTF_GetError()));
-	}
-}
+SDLText::SDLText(SDL_Renderer* renderer)
+	: renderer(renderer), texture(nullptr) {}
 
 SDLText::~SDLText() {
 	if (texture) {
@@ -22,6 +14,20 @@ SDLText::~SDLText() {
 		TTF_CloseFont(font);
 	}
 	TTF_Quit();
+}
+
+bool SDLText::loadFont(const std::string& fontPath, int fontSize)
+{
+	if (TTF_Init() == -1) {
+		throw std::runtime_error("Erreur d'initialisation de TTF : " + std::string(TTF_GetError()));
+		return false;
+	}
+	font = TTF_OpenFont(fontPath.c_str(), fontSize);
+	if (!font) {
+		throw std::runtime_error("Erreur lors du chargement de la police : " + std::string(TTF_GetError()));
+		return false;
+	}
+	return true;
 }
 
 void SDLText::loadText(const std::string& text) {

@@ -1,4 +1,4 @@
-#define SDL_MAIN_HANDLED
+
 
 #include <iostream>
 #include "framework.h"
@@ -11,20 +11,17 @@
 
 #include "TimeManager.h"
 
-#define USE_SDL false // Basculer entre SDL et Raylib
+#define USE_SDL true // Basculer entre SDL et Raylib
 
 #if USE_SDL
 using CurrentWindow = SDLWindow;
-using CurrentText = SDLText;
 #define TITLE "SDL"
 #else
 using CurrentWindow = RaylibWindow;
-using CurrentText = RaylibText;
 #define TITLE "Raylib"
 #endif
 
 int main() {
-    // Initialisation de la fen�tre
     CurrentWindow window;
     if (!window.initialize() || !window.createWindow(WIN_WIDTH, WIN_HEIGHT, TITLE)) {
         std::cerr << "Failed to initialize window!" << std::endl;
@@ -43,7 +40,6 @@ int main() {
     text->setPosition(100, 100);
 	  text->loadText("Bienvenue");
   
-    // Cr�ation du sprite via la m�thode polymorphe
     Sprite* sprite = window.createSprite();
     if (!sprite->LoadImage("ball.png")) {
         std::cerr << "Failed to load sprite image!" << std::endl;

@@ -58,7 +58,6 @@ int main() {
         }
 
         TimeManager::Instance().Update();
-        float deltaTime = TimeManager::Instance().GetDeltaTime();
         
         // TO DO: Gerer ca avec dans les classes sprite  (Logique de rebonsissement)
         x += dx * TimeManager::Instance().GetDeltaTime();
@@ -81,6 +80,7 @@ int main() {
     }
 
     delete sprite;
+    delete text;
     window.close();
     return 0;
 }

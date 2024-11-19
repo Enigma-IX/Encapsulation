@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 #include "framework.h"
 
@@ -38,7 +36,7 @@ int main() {
         return -1;
     }
     text->setPosition(100, 100);
-	  text->loadText("Bienvenue");
+	text->loadText("Bienvenue");
   
     Sprite* sprite = window.createSprite();
     if (!sprite->LoadImage("ball.png")) {

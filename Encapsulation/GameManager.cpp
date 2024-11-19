@@ -3,6 +3,10 @@
 GameManager* GameManager::instance = nullptr;
 
 
+GameManager::GameManager()
+{
+}
+
 GameManager& GameManager::Instance() {
 	if (!instance) {
 		instance = new GameManager();
@@ -39,6 +43,7 @@ void GameManager::InitGame()
 	}
 
 	ball = new Ball(sprite, 20.0f, WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	sprite->SetPosition(x, y);
 }
 
 void GameManager::StartMainLoop()

@@ -20,7 +20,6 @@ private:
 	//Sprite* sprite;
 	Text* text;
 	Ball* ball;
-	TimeManager timeManager;
 
 	GameManager(); // Constructeur privé
 

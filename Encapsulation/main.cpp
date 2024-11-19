@@ -5,7 +5,7 @@
 #include "RaylibWindow.h"
 #include "TimeManager.h"
 
-#define USE_SDL true // Basculer entre SDL et Raylib à la compilation
+#define USE_SDL true // Basculer entre SDL et Raylib ï¿½ la compilation
 
 #if USE_SDL
 using CurrentWindow = SDLWindow;
@@ -14,14 +14,14 @@ using CurrentWindow = RaylibWindow;
 #endif
 
 int main() {
-    // Initialisation de la fenêtre
+    // Initialisation de la fenï¿½tre
     CurrentWindow window;
     if (!window.initialize() || !window.createWindow(WIN_WIDTH, WIN_HEIGHT, "Encapsulation Project")) {
         std::cerr << "Failed to initialize window!" << std::endl;
         return -1;
     }
 
-    // Création du sprite via la méthode polymorphe
+    // Crï¿½ation du sprite via la mï¿½thode polymorphe
     Sprite* sprite = window.createSprite();
     if (!sprite->LoadImage("ball.png")) {
         std::cerr << "Failed to load sprite image!" << std::endl;
@@ -46,7 +46,7 @@ int main() {
         TimeManager::Instance().Update();
         float deltaTime = TimeManager::Instance().GetDeltaTime();
 
-        // Mise à jour des positions et rebonds
+        // Mise ï¿½ jour des positions et rebonds
         x += dx * deltaTime;
         y += dy * deltaTime;
         if (x < 0 || x > WIN_WIDTH - 50) dx = -dx;
@@ -56,7 +56,7 @@ int main() {
 
         // Rendu
         window.clear();
-        window.drawSprite(*sprite); // Dessin du sprite via la fenêtre
+        window.drawSprite(*sprite); // Dessin du sprite via la fenï¿½tre
         window.display();
     }
 

@@ -1,16 +1,25 @@
 #pragma once
 
+#include <string>
+
 // Classe mère abstraite
 
 class Text {
+protected:
+	int x, y;
+
 public:
-	virtual ~Text() = default;
+	Text() : x(0), y(0) {}
+	virtual ~Text() {}
 
-	virtual void SetText() = 0;
-	virtual void GetText() = 0;
-	virtual void DrawText() = 0;
-	virtual void SetPosition() = 0;
+	void setPosition(int x, int y) 
+	{
+		this->x = x;
+		this->y = y;
+	}
 
-	float posX;
-	float poxY;
+	std::pair<int, int> getPosition() const { return { x, y }; }
+
+	virtual void loadText(const std::string& text) = 0;
+	virtual void render() const = 0;
 };

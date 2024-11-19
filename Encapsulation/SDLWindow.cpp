@@ -1,4 +1,6 @@
 #include "SDLWindow.h"
+#include "SDLSprite.h"
+#include <iostream>
 
 SDLWindow::SDLWindow() : window(nullptr), renderer(nullptr), open(false) {}
 
@@ -6,8 +8,7 @@ SDLWindow::~SDLWindow() {
     close();
 }
 
-bool SDLWindow::initialize() 
-{
+bool SDLWindow::initialize() {
     return true;
 }
 
@@ -31,21 +32,6 @@ void SDLWindow::clear() {
     SDL_RenderClear(renderer);
 }
 
-void SDLWindow::drawCircle(float x, float y, float radius) {
-    // TO DO: gerer ca dans Sprite
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 1);
-
-    for (float w = 0; w < radius * 2; w++) {
-        for (float h = 0; h < radius * 2; h++) {
-            float dx = radius - w; 
-            float dy = radius - h;
-            if ((dx * dx + dy * dy) <= (radius * radius)) {
-                SDL_RenderDrawPoint(renderer, x + dx, y + dy);
-            }
-        }
-    }
-}
-
 void SDLWindow::display() {
     SDL_RenderPresent(renderer);
 }
@@ -55,4 +41,16 @@ void SDLWindow::close() {
     if (window) SDL_DestroyWindow(window);
     SDL_Quit();
     open = false;
+}
+
+void SDLWindow::drawSprite(const Sprite& sprite) {
+    // Récupération de la position du sprite
+    std::pair<float, float> position = sprite.GetPosition();
+
+    // Appel à la méthode Draw de l'implémentation spécifique (SDLSprite)
+    sprite.Draw(position.first, position.second);
+}
+
+Sprite* SDLWindow::createSprite() {
+    return new SDLSprite(renderer);
 }

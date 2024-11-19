@@ -20,6 +20,7 @@ public:
 
 	std::pair<int, int> getPosition() const { return { x, y }; }
 
+	virtual bool loadFont(const std::string& fontPath, int fontSize) = 0;
 	virtual void loadText(const std::string& text) = 0;
 	virtual void render() const = 0;
 };

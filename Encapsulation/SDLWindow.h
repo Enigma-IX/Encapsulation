@@ -5,6 +5,8 @@
 #include "Window.h"
 #include <SDL.h>
 
+#include <string>
+
 class SDLWindow : public Window {
 private:
     SDL_Window* window;
@@ -23,4 +25,9 @@ public:
     void drawSprite(const Sprite& sprite) override;
     Sprite* createSprite() override;
     void close() override;
+
+    void drawText(const Text& text) override;
+    Text* createText() override;
+
+	SDL_Renderer* getRenderer() const { return renderer; }
 };

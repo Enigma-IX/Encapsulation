@@ -4,6 +4,7 @@
 
 #include "Window.h"
 #include "raylib.h"
+#include <string>
 
 class RaylibWindow : public Window {
 private:
@@ -19,6 +20,10 @@ public:
     void clear() override;
     void display() override;
     void close() override;
+
+    void drawText(const Text& text) override;
+    Text* createText() override;
+  
     void drawSprite(const Sprite& sprite) override;
     Sprite* createSprite() override;
 };

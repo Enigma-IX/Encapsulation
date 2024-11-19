@@ -1,16 +1,20 @@
 #pragma once
 
 #include "Text.h"
+#include <raylib.h>
+#include <string>
 
-class RaylibText : public Text
-{
+class RaylibText : public Text {
+private:
+	Font font;
+	std::string loadedText;
+	Color color;
+
 public:
 	RaylibText();
 	~RaylibText();
 
-	void SetText() override;
-	void GetText() override;
-	void DrawText() override;
-	void SetPosition() override;
+	bool loadFont(const std::string& fontPath, int fontSize);
+	void loadText(const std::string& text) override;
+	void render() const override;
 };
-

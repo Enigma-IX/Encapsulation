@@ -1,4 +1,8 @@
 #pragma once
+
+#include <string>
+
+#include "Text.h"
 #include "Sprite.h"
 
 class Window {
@@ -11,6 +15,10 @@ public:
     virtual void clear() = 0;
     virtual void display() = 0;
     virtual void close() = 0;
+
+    virtual Text* createText() = 0;
+    virtual void drawText(const Text& text) = 0;
+
     virtual void drawSprite(const Sprite& sprite) = 0;
     virtual Sprite* createSprite() = 0; 
 };

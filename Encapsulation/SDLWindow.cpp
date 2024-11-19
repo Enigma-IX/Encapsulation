@@ -2,6 +2,8 @@
 #include "SDLSprite.h"
 #include <iostream>
 
+#include "SDLText.h"
+
 SDLWindow::SDLWindow() : window(nullptr), renderer(nullptr), open(false) {}
 
 SDLWindow::~SDLWindow() {
@@ -32,6 +34,11 @@ void SDLWindow::clear() {
     SDL_RenderClear(renderer);
 }
 
+void SDLWindow::drawText(const Text& text)
+{
+    text.render();
+}
+
 void SDLWindow::display() {
     SDL_RenderPresent(renderer);
 }
@@ -43,14 +50,21 @@ void SDLWindow::close() {
     open = false;
 }
 
+
+Text* SDLWindow::createText()
+{
+	return new SDLText(renderer);
+}
+
 void SDLWindow::drawSprite(const Sprite& sprite) {
-    // Récupération de la position du sprite
+    // RÃ©cupÃ©ration de la position du sprite
     std::pair<float, float> position = sprite.GetPosition();
 
-    // Appel à la méthode Draw de l'implémentation spécifique (SDLSprite)
+    // Appel Ã  la mÃ©thode Draw de l'implÃ©mentation spÃ©cifique (SDLSprite)
     sprite.Draw(position.first, position.second);
 }
 
 Sprite* SDLWindow::createSprite() {
     return new SDLSprite(renderer);
+
 }

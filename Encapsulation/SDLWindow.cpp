@@ -21,6 +21,8 @@ bool SDLWindow::createWindow(int width, int height, const char* title) {
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (!renderer) return false;
 
+    SDL_SetWindowSize(window, width, height);
+
     open = true;
     return true;
 }

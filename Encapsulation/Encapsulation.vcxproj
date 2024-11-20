@@ -415,6 +415,7 @@
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="DemoGameMode.cpp" />
+    <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameMode.cpp" />
     <ClCompile Include="main.cpp" />
@@ -433,6 +434,7 @@
     <ClInclude Include="Ball.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="DemoGameMode.h" />
+    <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameMode.h" />

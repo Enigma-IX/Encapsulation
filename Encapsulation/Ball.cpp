@@ -24,8 +24,8 @@ void Ball::Update(float deltaTime, float windowWidth, float windowHeight)
     x += vitesseX * deltaTime;
     y += vitesseY * deltaTime;
 
-    if (x - radius /2 < 0 || x + radius * 2 > windowWidth) vitesseX = -vitesseX;
-    if (y - radius /2 < 0 || y + radius * 2 > windowHeight) vitesseY = -vitesseY;
+    if (x < 0 || x + spriteBall->GetSize().first > windowWidth) vitesseX = -vitesseX;
+    if (y < 0 || y + spriteBall->GetSize().second > windowHeight) vitesseY = -vitesseY;
 
     spriteBall->SetPosition(x, y);
 

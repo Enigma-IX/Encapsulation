@@ -43,7 +43,7 @@ void GameManager::InitGame()
 	}
 
 	ball = new Ball(sprite, 20.0f, WIN_WIDTH / 2, WIN_HEIGHT / 2);
-	sprite->SetPosition(x, y);
+	sprite->SetPosition(WIN_WIDTH / 2, WIN_HEIGHT / 2);
 }
 
 void GameManager::StartMainLoop()

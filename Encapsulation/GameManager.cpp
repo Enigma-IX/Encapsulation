@@ -89,7 +89,7 @@ void GameManager::Draw()
 
 	ball->Draw(window);
 	//window.drawText(*text);
-	fpsCounter->Update(deltaTime);
+	fpsCounter->Update(TimeManager::Instance().GetDeltaTime());
 	fpsCounter->Draw(window);
 	
 	window.display();

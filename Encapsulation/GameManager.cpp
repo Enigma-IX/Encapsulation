@@ -27,15 +27,6 @@ void GameManager::InitGame()
 		return;
 	}
 
-	/*text = window.createText();
-	if (!text->loadFont("Montserrat-Regular.ttf", 24))
-	{
-		delete text;
-		return;
-	}
-	text->setPosition(100, 100);
-	text->loadText("Bienvenue");*/
-
 	Text* fpsText = window.createText();
 	if (fpsText->loadFont("Montserrat-Regular.ttf", 18))
 	{
@@ -89,7 +80,7 @@ void GameManager::Draw()
 
 	ball->Draw(window);
 	//window.drawText(*text);
-	fpsCounter->Update(deltaTime);
+	fpsCounter->Update(TimeManager::Instance().GetDeltaTime());
 	fpsCounter->Draw(window);
 	
 	window.display();

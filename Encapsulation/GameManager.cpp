@@ -27,33 +27,10 @@ void GameManager::InitGame()
 		return;
 	}
 
-	/*text = window.createText();
-	if (!text->loadFont("Montserrat-Regular.ttf", 24))
-	{
-		delete text;
-		return;
-	}
-	text->setPosition(100, 100);
-	text->loadText("Bienvenue");*/
-
 	Text* fpsText = window.createText();
-	if (fpsText->loadFont("Montserrat-Regular.ttf", 18))
-	{
-		fpsText->setPosition(100, 100);
-		std::string fpsString = "FPS : 0";
-		fpsText->loadText(fpsString);
-		fpsCounter = new FPSCounter(fpsText);
-	}
-
-	Sprite* sprite = window.createSprite();
-	if (!sprite->LoadImage("ball.png")) {
-		std::cerr << "Failed to load sprite image!" << std::endl;
-		delete sprite;
-		return;
-	}
-
-	ball = new Ball(sprite, 20.0f, WIN_WIDTH / 2, WIN_HEIGHT / 2);
-	sprite->SetPosition(WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	
+	fpsCounter = new FPSCounter();
+	ball = new Ball();
 }
 
 void GameManager::StartMainLoop()
@@ -71,15 +48,14 @@ void GameManager::StartMainLoop()
 
 		Update();
 	}
-
 }
 
 void GameManager::Update()
 {
 	TimeManager::Instance().Update();
 
-	ball->Update(TimeManager::Instance().GetDeltaTime(), WIN_WIDTH, WIN_HEIGHT);
-	fpsCounter->Update(TimeManager::Instance().GetDeltaTime());
+	ball->Update();
+	fpsCounter->Update();
 
 	Draw();
 }
@@ -88,8 +64,8 @@ void GameManager::Draw()
 {
 	window.clear();
 
-	ball->Draw(window);
-	fpsCounter->Draw(window);
+	ball->Draw();
+	fpsCounter->Draw();
 	
 	window.display();
 }
@@ -104,6 +80,12 @@ void GameManager::WipeGame()
 	delete ball;
 	delete fpsCounter;
 	window.close();
+}
+
+
+CurrentWindow* GameManager::getWindow()
+{
+	return &window;
 }
 
 GameManager::~GameManager()

@@ -27,7 +27,9 @@ void* RaylibSprite::GetData() const {
 
 void RaylibSprite::Draw(float x, float y) const {
     if (texture) {
-        DrawTexture(*texture, static_cast<int>(x), static_cast<int>(y), WHITE);
+        Rectangle sourceRect = { 0, 0, static_cast<float>(texture->width), static_cast<float>(texture->height) };
+        Rectangle destRect = { x, y, width, height };
+        DrawTexturePro(*texture, sourceRect, destRect, Vector2{ 0, 0 }, 0.0f, WHITE);
     }
 }
 
@@ -36,6 +38,16 @@ void RaylibSprite::SetPosition(float x, float y) {
     positionY = y;
 }
 
-std::pair<float, float> RaylibSprite::GetPosition() const {
-    return { positionX, positionY };
+std::pair<float, float> RaylibSprite::GetPosition() const
+{
+        return { positionX, positionY };
+}
+
+void RaylibSprite::SetSize(float width, float height) {
+    this->width = width;
+    this->height = height;
+}
+
+std::pair<float, float> RaylibSprite::GetSize() const {
+    return { width, height };
 }

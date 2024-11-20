@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 
-RaylibText::RaylibText() : color(WHITE) {}
+RaylibText::RaylibText() : color(WHITE), font({0,0}) {}
 
 RaylibText::~RaylibText() {
 	UnloadFont(font);

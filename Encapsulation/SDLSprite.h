@@ -16,9 +16,13 @@ public:
 	void SetPosition(float x, float y) override;
 	std::pair<float, float> GetPosition() const override;
 
+	void SetSize(float width, float height) override;
+	std::pair<float, float> GetSize() const override;
+
 private:
 	SDL_Texture* texture;
 	SDL_Renderer* renderer;
 	float positionX, positionY;
+	float width, height;
 };
 

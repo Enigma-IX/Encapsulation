@@ -5,6 +5,7 @@ GameManager* GameManager::instance = nullptr;
 
 GameManager::GameManager()
 {
+
 }
 
 GameManager& GameManager::Instance() {
@@ -68,10 +69,13 @@ void GameManager::Update()
 {
 	TimeManager::Instance().Update();
 
-	float deltaTime = TimeManager::Instance().GetDeltaTime();
+	ball->Update(TimeManager::Instance().GetDeltaTime(), WIN_WIDTH, WIN_HEIGHT);
 
-	ball->Update(deltaTime, WIN_WIDTH, WIN_HEIGHT);
+	Draw();
+}
 
+void GameManager::Draw()
+{
 	window.clear();
 
 	ball->Draw(window);

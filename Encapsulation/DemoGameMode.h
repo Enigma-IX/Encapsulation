@@ -1,10 +1,16 @@
 #pragma once
 #include "GameMode.h"
 
+#include "Ball.h"
+#include "FPSCounter.h"
+
 
 class DemoGameMode : public GameMode
 {
 private:
+
+	Ball* ball;
+	FPSCounter* fpsCounter;
 	
 public:
 	DemoGameMode();

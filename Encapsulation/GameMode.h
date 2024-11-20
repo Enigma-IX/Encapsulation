@@ -11,7 +11,6 @@
 
 class GameMode
 {
-
 private:	
 
 public:
@@ -22,5 +21,12 @@ public:
 	virtual void UpdateGameMode() = 0;
 	virtual void Draw() = 0;
 	virtual void EndGameMode() = 0;
+
+	enum GameModeType
+	{
+		DEMO,
+		PONG,
+		BRICK
+	};
 };
 

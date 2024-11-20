@@ -70,6 +70,7 @@ void GameManager::Update()
 	TimeManager::Instance().Update();
 
 	ball->Update(TimeManager::Instance().GetDeltaTime(), WIN_WIDTH, WIN_HEIGHT);
+	fpsCounter->Update(TimeManager::Instance().GetDeltaTime());
 
 	Draw();
 }
@@ -79,8 +80,6 @@ void GameManager::Draw()
 	window.clear();
 
 	ball->Draw(window);
-	//window.drawText(*text);
-	fpsCounter->Update(TimeManager::Instance().GetDeltaTime());
 	fpsCounter->Draw(window);
 	
 	window.display();

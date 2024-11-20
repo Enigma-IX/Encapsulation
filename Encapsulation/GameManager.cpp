@@ -15,9 +15,28 @@ GameManager& GameManager::Instance() {
 	return *instance;
 }
 
-void GameManager::SelectGameMode()
+void GameManager::SelectGameMode(int gameType)
 {
+	if (gameMode) {
+		delete gameMode;
+		gameMode = nullptr;
+	}
 
+	switch (gameType) {
+	case GameMode::DEMO:
+		gameMode = new DemoGameMode();
+		break;
+	case GameMode::PONG:
+		gameMode = new DemoGameMode();
+		break;
+	case GameMode::BRICK:
+		gameMode = new DemoGameMode();
+		break;
+	default:
+		std::cerr << "Invalid choice, defaulting to Demo Game Mode.\n";
+		gameMode = new DemoGameMode();
+		break;
+	}	
 }
 
 void GameManager::InitGame()
@@ -27,8 +46,8 @@ void GameManager::InitGame()
 		return;
 	}
 	
-	fpsCounter = new FPSCounter();
-	ball = new Ball();
+	SelectGameMode(GameMode::DEMO);
+	gameMode->InitGameMode();
 }
 
 void GameManager::StartMainLoop()
@@ -52,8 +71,7 @@ void GameManager::Update()
 {
 	TimeManager::Instance().Update();
 
-	ball->Update();
-	fpsCounter->Update();
+	gameMode->UpdateGameMode();
 
 	Draw();
 }
@@ -62,8 +80,7 @@ void GameManager::Draw()
 {
 	window.clear();
 
-	ball->Draw();
-	fpsCounter->Draw();
+	gameMode->Draw();
 	
 	window.display();
 }
@@ -71,12 +88,12 @@ void GameManager::Draw()
 void GameManager::EndGame()
 {
 	// Logique fin de partie
+	gameMode->EndGameMode();
 }
 
 void GameManager::WipeGame()
 {
-	delete ball;
-	delete fpsCounter;
+	EndGame();
 	window.close();
 }
 

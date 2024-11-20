@@ -4,15 +4,8 @@
 #include "framework.h"
 #include "config.h"
 
-#include "TimeManager.h"
-
-#include "SDLText.h"
-#include "RaylibText.h"
-#include "Ball.h"
-#include "FPSCounter.h"
-
-//#include "GameMode.h"
-//#include "DemoGameMode.h"
+#include "GameMode.h"
+#include "DemoGameMode.h"
 
 
 class GameManager
@@ -21,8 +14,7 @@ private:
 	static GameManager* instance;  // Singleton instance
 
 	CurrentWindow window;
-	Ball* ball;
-	FPSCounter* fpsCounter;
+	GameMode* gameMode;
 
 	GameManager(); // Constructeur privé
 
@@ -30,7 +22,7 @@ public:
 	// Singleton instance
 	static GameManager& Instance();
 
-	void SelectGameMode();
+	void SelectGameMode(int gameType);
 	void InitGame();
 	void StartMainLoop();
 	void Update();

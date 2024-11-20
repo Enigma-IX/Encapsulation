@@ -5,11 +5,12 @@
 class FPSCounter
 {
 public:
-	FPSCounter(Text* texte);
+	FPSCounter();
+	void Init();
 	~FPSCounter();
 
-	void Update(double deltaTime);
-	void Draw(Window& window);
+	void Update();
+	void Draw();
 
 private:
 	Text* fpsText;

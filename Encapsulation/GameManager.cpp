@@ -28,14 +28,8 @@ void GameManager::InitGame()
 	}
 
 	Text* fpsText = window.createText();
-	if (fpsText->loadFont("Montserrat-Regular.ttf", 18))
-	{
-		fpsText->setPosition(100, 100);
-		std::string fpsString = "FPS : 0";
-		fpsText->loadText(fpsString);
-		fpsCounter = new FPSCounter(fpsText);
-	}
-
+	
+	fpsCounter = new FPSCounter();
 	ball = new Ball();
 }
 
@@ -54,7 +48,6 @@ void GameManager::StartMainLoop()
 
 		Update();
 	}
-
 }
 
 void GameManager::Update()
@@ -62,7 +55,7 @@ void GameManager::Update()
 	TimeManager::Instance().Update();
 
 	ball->Update();
-	fpsCounter->Update(TimeManager::Instance().GetDeltaTime());
+	fpsCounter->Update();
 
 	Draw();
 }
@@ -72,7 +65,7 @@ void GameManager::Draw()
 	window.clear();
 
 	ball->Draw();
-	fpsCounter->Draw(window);
+	fpsCounter->Draw();
 	
 	window.display();
 }

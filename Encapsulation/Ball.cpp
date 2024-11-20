@@ -28,8 +28,6 @@ void Ball::Update(float deltaTime, float windowWidth, float windowHeight)
     if (y < 0 || y + spriteBall->GetSize().second > windowHeight) dirY = -dirY;
 
     spriteBall->SetPosition(x, y);
-
-    std::cout << "Position: (" << x << ", " << y << "), DeltaTime: " << deltaTime << std::endl;
 }
 
 void Ball::Draw(Window& window) const

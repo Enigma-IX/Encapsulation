@@ -9,3 +9,11 @@ FPSCounter::~FPSCounter()
 {
 
 }
+
+void FPSCounter::Update(double deltaTime)
+{
+}
+
+void FPSCounter::Renderer()
+{
+}

@@ -36,15 +36,7 @@ void GameManager::InitGame()
 		fpsCounter = new FPSCounter(fpsText);
 	}
 
-	Sprite* sprite = window.createSprite();
-	if (!sprite->LoadImage("ball.png")) {
-		std::cerr << "Failed to load sprite image!" << std::endl;
-		delete sprite;
-		return;
-	}
-
-	ball = new Ball(sprite, 20.0f, WIN_WIDTH / 2, WIN_HEIGHT / 2);
-	sprite->SetPosition(WIN_WIDTH / 2, WIN_HEIGHT / 2);
+	ball = new Ball();
 }
 
 void GameManager::StartMainLoop()
@@ -69,7 +61,7 @@ void GameManager::Update()
 {
 	TimeManager::Instance().Update();
 
-	ball->Update(TimeManager::Instance().GetDeltaTime(), WIN_WIDTH, WIN_HEIGHT);
+	ball->Update();
 	fpsCounter->Update(TimeManager::Instance().GetDeltaTime());
 
 	Draw();
@@ -79,7 +71,7 @@ void GameManager::Draw()
 {
 	window.clear();
 
-	ball->Draw(window);
+	ball->Draw();
 	fpsCounter->Draw(window);
 	
 	window.display();
@@ -95,6 +87,11 @@ void GameManager::WipeGame()
 	delete ball;
 	delete fpsCounter;
 	window.close();
+}
+
+CurrentWindow GameManager::getWindow()
+{
+	return window;
 }
 
 GameManager::~GameManager()

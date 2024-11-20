@@ -14,7 +14,7 @@ void FPSCounter::Init()
 		delete fpsText;
 		return;
 	}
-		fpsText->setPosition(100, 100);
+		fpsText->setPosition(0, 0);
 		std::string fpsString = "FPS : 0";
 		fpsText->loadText(fpsString);
 }

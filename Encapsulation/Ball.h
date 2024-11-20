@@ -11,7 +11,7 @@ public:
 	void Draw(Window& window) const;
 private:
 	Sprite* spriteBall;
-	float vitesseX, vitesseY;
+	float dirX, dirY;
 	float radius;
 };
 

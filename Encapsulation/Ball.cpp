@@ -3,8 +3,8 @@
 
 Ball::Ball(Sprite* sprite, float radius, float dx, float dy) {
     spriteBall = sprite;
-    vitesseX = dx;
-    vitesseY = dy;
+    dirX = dx;
+    dirY = dy;
     this->radius = radius;
 
     spriteBall->SetSize(radius * 2, radius * 2);
@@ -21,11 +21,11 @@ void Ball::Update(float deltaTime, float windowWidth, float windowHeight)
     float x = position.first;
     float y = position.second;
 
-    x += vitesseX * deltaTime;
-    y += vitesseY * deltaTime;
+    x += dirX * deltaTime;
+    y += dirY * deltaTime;
 
-    if (x < 0 || x + spriteBall->GetSize().first > windowWidth) vitesseX = -vitesseX;
-    if (y < 0 || y + spriteBall->GetSize().second > windowHeight) vitesseY = -vitesseY;
+    if (x < 0 || x + spriteBall->GetSize().first > windowWidth) dirX = -dirX;
+    if (y < 0 || y + spriteBall->GetSize().second > windowHeight) dirY = -dirY;
 
     spriteBall->SetPosition(x, y);
 

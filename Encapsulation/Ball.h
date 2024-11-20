@@ -9,9 +9,10 @@ public:
 
 	void Update(float deltaTime, float windowWidth, float windowHeight);
 	void Draw(Window& window) const;
+	void Destroy();
 private:
 	Sprite* spriteBall;
-	float vitesseX, vitesseY;
+	float dirX, dirY;
 	float radius;
 };
 

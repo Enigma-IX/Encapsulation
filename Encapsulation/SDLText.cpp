@@ -4,7 +4,7 @@
 #include <iostream>
 
 SDLText::SDLText(SDL_Renderer* renderer)
-	: renderer(renderer), texture(nullptr) {}
+	: renderer(renderer), texture(nullptr), font(nullptr), rect({0,0,0,0}) { }
 
 SDLText::~SDLText() {
 	if (texture) {

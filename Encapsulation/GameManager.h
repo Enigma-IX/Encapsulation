@@ -11,6 +11,9 @@
 #include "Ball.h"
 #include "FPSCounter.h"
 
+//#include "GameMode.h"
+//#include "DemoGameMode.h"
+
 
 class GameManager
 {
@@ -31,6 +34,7 @@ public:
 	void InitGame();
 	void StartMainLoop();
 	void Update();
+	void Draw();
 	void EndGame();
 	void WipeGame();
 

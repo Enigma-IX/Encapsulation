@@ -420,6 +420,7 @@
     <ClCompile Include="GameMode.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RaylibInputManager.cpp" />
     <ClCompile Include="RaylibSprite.cpp" />
     <ClCompile Include="RaylibText.cpp" />
     <ClCompile Include="RaylibWindow.cpp" />
@@ -441,6 +442,7 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameMode.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="RaylibInputManager.h" />
     <ClInclude Include="RaylibSprite.h" />
     <ClInclude Include="RaylibText.h" />
     <ClInclude Include="RaylibWindow.h" />

@@ -5,7 +5,7 @@
 
 Ball::Ball() : radius(20.0f), dirX(WIN_WIDTH / 2), dirY(WIN_HEIGHT / 2) {
     
-    spriteBall = GameManager::Instance().getWindow().createSprite();
+    spriteBall = GameManager::Instance().getWindow()->createSprite();
     Init();
 }
 
@@ -42,5 +42,5 @@ void Ball::Update()
 
 void Ball::Draw() const
 {
-    GameManager::Instance().getWindow().drawSprite(*spriteBall);
+    GameManager::Instance().getWindow()->drawSprite(*spriteBall);
 }

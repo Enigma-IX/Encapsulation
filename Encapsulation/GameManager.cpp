@@ -89,9 +89,10 @@ void GameManager::WipeGame()
 	window.close();
 }
 
-CurrentWindow GameManager::getWindow()
+
+CurrentWindow* GameManager::getWindow()
 {
-	return window;
+	return &window;
 }
 
 GameManager::~GameManager()

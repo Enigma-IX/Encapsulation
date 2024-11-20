@@ -7,6 +7,7 @@
 
 #include <string>
 
+
 class SDLWindow : public Window {
 private:
     SDL_Window* window;

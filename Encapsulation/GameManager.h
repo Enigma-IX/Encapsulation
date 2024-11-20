@@ -38,7 +38,7 @@ public:
 	void EndGame();
 	void WipeGame();
 
-	CurrentWindow getWindow();
+	CurrentWindow* getWindow();
 
 	~GameManager();
 };

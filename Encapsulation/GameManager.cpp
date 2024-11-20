@@ -26,8 +26,6 @@ void GameManager::InitGame()
 		std::cerr << "Failed to initialize window!" << std::endl;
 		return;
 	}
-
-	Text* fpsText = window.createText();
 	
 	fpsCounter = new FPSCounter();
 	ball = new Ball();

@@ -9,6 +9,7 @@
 #include "SDLText.h"
 #include "RaylibText.h"
 #include "Ball.h"
+#include "FPSCounter.h"
 
 
 class GameManager
@@ -17,8 +18,8 @@ private:
 	static GameManager* instance;  // Singleton instance
 
 	CurrentWindow window;
-	Text* text;
 	Ball* ball;
+	FPSCounter* fpsCounter;
 
 	GameManager(); // Constructeur privé
 

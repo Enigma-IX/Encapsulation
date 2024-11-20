@@ -22,10 +22,11 @@ void FPSCounter::Update(double deltaTime)
 		elapsedTime = 0;
 
 		std::string fpsString = "FPS : " + std::to_string(static_cast<int>(FPS));
+		fpsText->loadText(fpsString);
 	}
 }
 
-void FPSCounter::Renderer()
+void FPSCounter::Draw(Window& window)
 {
-	fpsText->render();
+	window.drawText(*fpsText);
 }

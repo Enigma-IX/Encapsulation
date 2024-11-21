@@ -3,6 +3,7 @@
 
 #include "Ball.h"
 #include "FPSCounter.h"
+#include "ScoreCounter.h"
 
 
 class DemoGameMode : public GameMode
@@ -11,6 +12,7 @@ private:
 
 	Ball* ball;
 	FPSCounter* fpsCounter;
+	ScoreCounter* scoreCounter;
 	
 public:
 	DemoGameMode();

@@ -21,6 +21,6 @@ private:
 
 	std::chrono::high_resolution_clock::time_point lastTimePoint;
 	double deltaTime;
-	int totalTime;
+	double totalTime;
 };
 

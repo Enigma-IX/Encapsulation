@@ -84,37 +84,43 @@ bool Ball::CheckCollisionWithBottomWall()
 }
 
 bool Ball::CheckCollisionWithPlayer(Player* player) {
-    std::pair<float, float> ballPosition = spriteBall->GetPosition();
-    std::pair<float, float> playerPosition(player->GetX(), player->GetY());
+	std::pair<float, float> ballPosition = spriteBall->GetPosition();
+	float ballX = ballPosition.first;
+	float ballY = ballPosition.second;
+	float ballDiameter = radius * 2;
 
-    float ballX = ballPosition.first;
-    float ballY = ballPosition.second;
-    float ballDiameter = radius * 2;
+	std::pair<float, float> playerPosition(player->GetX(), player->GetY());
+	float playerX = playerPosition.first;
+	float playerY = playerPosition.second;
+	float playerWidth = player->GetWidth();
+	float playerHeight = player->GetHeight();
 
-    float playerX = playerPosition.first;
-    float playerY = playerPosition.second;
-    float playerWidth = player->GetWidth();
-    float playerHeight = player->GetHeight();
+	bool collisionX = ballX + ballDiameter > playerX && ballX < playerX + playerWidth;
+	bool collisionY = ballY + ballDiameter > playerY && ballY < playerY + playerHeight;
 
-    bool collisionX = ballX + ballDiameter > playerX && ballX < playerX + player->GetWidth();
-    bool collisionY = ballY + ballDiameter > playerY && ballY < playerY + player->GetHeight();
+	if (collisionX && collisionY) {
+		if (playerWidth > playerHeight) {
+			if (ballY + ballDiameter / 2 < playerY + playerHeight / 2) {
+				spriteBall->SetPosition(ballX, playerY - ballDiameter);
+			}
+			else {
+				spriteBall->SetPosition(ballX, playerY + playerHeight);
+			}
+		}
+		else {
+			if (ballX + ballDiameter / 2 < playerX + playerWidth / 2) {
+				spriteBall->SetPosition(playerX - ballDiameter, ballY);
+			}
+			else {
+				spriteBall->SetPosition(playerX + playerWidth, ballY);
+			}
+		}
+		return true;
+	}
 
-    if (collisionX && collisionY) {
-        // Gérer les collisions latérales (droite/gauche)
-        if (ballX + ballDiameter / 2 < playerX + playerWidth / 2) {
-            // Collision à gauche du joueur
-            spriteBall->SetPosition(playerX - ballDiameter, ballY);
-        }
-        else {
-            // Collision à droite du joueur
-            spriteBall->SetPosition(playerX + playerWidth, ballY);
-        }
-
-        return true;
-    }
-
-    return false;
+	return false;
 }
+
 
 
 

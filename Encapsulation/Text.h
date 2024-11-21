@@ -23,4 +23,8 @@ public:
 	virtual bool loadFont(const std::string& fontPath, int fontSize) = 0;
 	virtual void loadText(const std::string& text) = 0;
 	virtual void render() const = 0;
+	virtual std::pair<int, int> getSize() const = 0;
+
+	int getCenterX(int screenWidth) const;
+	int getCenterY(int screenHeight) const;
 };

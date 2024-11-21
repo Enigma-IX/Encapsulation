@@ -46,3 +46,4 @@ int ScoreCounter::GetScore()
 {
 	return static_cast<int>(score);
 }
+

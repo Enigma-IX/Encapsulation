@@ -19,9 +19,14 @@ void GameTimer::Init(float posX, float posY, int duration)
 		delete timerText;
 		return;
 	}
+	
 	timerText->setPosition(posX, posY);
+
 	std::string string = "Timer : ";
 	timerText->loadText(string);
+
+	int centerX = timerText->getCenterX(WIN_WIDTH);
+	timerText->setPosition(centerX, posY);
 }
 
 GameTimer::~GameTimer()

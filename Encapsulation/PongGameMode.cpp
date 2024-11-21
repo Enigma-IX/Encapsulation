@@ -75,7 +75,7 @@ void PongGameMode::CheckCollision()
 
 void PongGameMode::EndGameMode()
 {
-	//TO DO: Logique de cleanup avant de Wipe
+	ball->Stop();
 	return;
 
 	WipeGameMode();

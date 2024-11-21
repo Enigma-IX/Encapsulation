@@ -87,7 +87,7 @@ bool Ball::CheckCollisionWithPlayer(Player* player) {
 }
 
 
-
+/*
 void Ball::SetRandomDirection() {
 	std::random_device rd;
 	std::mt19937 gen(rd());
@@ -99,6 +99,30 @@ void Ball::SetRandomDirection() {
 	float magnitude = std::sqrt(randomX * randomX + randomY * randomY);
 	dirX = (randomX / magnitude) * speed;
 	dirY = (randomY / magnitude) * speed;
+}*/
+
+
+void Ball::SetRandomDirection() {
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_real_distribution<> angleDistr(0.0, 2.0 * M_PI);
+
+	const int maxAttempts = 100; // Nombre maximum de tentatives
+	int attempts = 0;
+	float angle;
+
+	do {
+		angle = angleDistr(gen);
+		attempts++;
+	} while ((std::fabs(std::cos(angle)) > 0.9 || std::fabs(std::sin(angle)) > 0.9) && attempts < maxAttempts); // Evite les angles de - de 10°
+
+	// Si toutes les tentatives échouent, utilise une direction par défaut
+	if (attempts == maxAttempts) {
+		angle = M_PI / 4.0;
+	}
+
+	dirX = std::cos(angle) * speed;
+	dirY = std::sin(angle) * speed;
 }
 
 void Ball::InvertDirectionX() {
@@ -114,6 +138,12 @@ void Ball::Reset()
 {
 	spriteBall->SetPosition(startPosX, startPosY);
     SetRandomDirection();
+}
+
+void Ball::Stop()
+{
+    dirY, dirX = 0, 0;
+	spriteBall->SetPosition(startPosX, startPosY);
 }
 
 void Ball::Draw() const

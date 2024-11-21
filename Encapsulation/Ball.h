@@ -20,6 +20,7 @@ public:
 	void SetRandomDirection();
 	void InvertDirectionY();
 	void Reset();
+	void Stop();
 
 private:
 	Sprite* spriteBall;

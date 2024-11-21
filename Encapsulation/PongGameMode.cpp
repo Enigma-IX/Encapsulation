@@ -14,7 +14,7 @@ bool PongGameMode::InitGameMode()
 {
 	fpsCounter = new FPSCounter();
   
-	timer = new GameTimer(WIN_WIDTH / 2, 0, 10);
+	timer = new GameTimer(WIN_WIDTH / 2, 0, 60);
 
 	scoreCounterP1 = new ScoreCounter(WIN_WIDTH / 8, WIN_HEIGHT - 50);
 	scoreCounterP2 = new ScoreCounter(7 * WIN_WIDTH / 8, WIN_HEIGHT - 50);

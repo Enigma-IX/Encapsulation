@@ -12,7 +12,7 @@ BrickGameMode::~BrickGameMode()
 bool BrickGameMode::InitGameMode()
 {
 	fpsCounter = new FPSCounter();
-	ball = new Ball();
+	ball = new Ball(WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	scoreCounter = new ScoreCounter();
 
 	player1 = new Player(1, WIN_WIDTH - 70.0f, WIN_HEIGHT / 2 - 50.0f);

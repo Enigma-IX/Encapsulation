@@ -3,21 +3,25 @@
 #include "Sprite.h"
 #include "GameManager.h"
 
-Ball::Ball() : radius(20.0f), dirX(WIN_WIDTH / 2), dirY(WIN_HEIGHT / 2) {
+#include <random>
+
+Ball::Ball(int posX, int posY) : radius(20.0f), dirX(0), dirY(0), speed(600){
     
     spriteBall = GameManager::Instance().getWindow()->createSprite();
-    Init();
+    Init(posX, posY);
 }
 
-void Ball::Init()
+void Ball::Init(int posX, int posY)
 {
+    SetRandomDirection();
+
     if (!spriteBall->LoadImage("ball.png")) {
         std::cerr << "Failed to load sprite image!" << std::endl;
         delete spriteBall;
         return;
     }
     spriteBall->SetSize(radius * 2, radius * 2);
-    spriteBall->SetPosition(dirX, dirY);
+    spriteBall->SetPosition(posX, posY);
 }
 
 Ball::~Ball()
@@ -61,6 +65,20 @@ bool Ball::CheckCollisionWithPlayer(Player* player) {
 void Ball::InvertDirectionX() {
     dirX = -dirX;
 }
+
+void Ball::SetRandomDirection() {
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_real_distribution<> distr(-1.0, 1.0);
+
+	float randomX = distr(gen);
+	float randomY = distr(gen);
+
+	float magnitude = std::sqrt(randomX * randomX + randomY * randomY);
+	dirX = (randomX / magnitude) * speed;
+	dirY = (randomY / magnitude) * speed;
+}
+
 
 void Ball::Draw() const
 {

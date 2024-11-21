@@ -13,7 +13,7 @@ DemoGameMode::~DemoGameMode()
 bool DemoGameMode::InitGameMode()
 {
 	fpsCounter = new FPSCounter();
-	ball = new Ball();
+	ball = new Ball(WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	scoreCounter = new ScoreCounter();
 	return true;
 }

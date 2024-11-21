@@ -6,18 +6,20 @@
 class Ball
 {
 public:
-	Ball();
-	void Init();
+	Ball(int posX, int posY);
+	void Init(int posX, int posY);
 	~Ball();
 
 	void Update();
 	void Draw() const;
 	bool CheckCollisionWithPlayer(Player* player);
 	void InvertDirectionX();
+	void SetRandomDirection();
 
 private:
 	Sprite* spriteBall;
 	float dirX, dirY;
+	float speed;
 	float radius;
 };
 

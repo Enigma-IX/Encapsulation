@@ -45,14 +45,12 @@ void PongGameMode::Draw()
 
 void PongGameMode::CheckCollision()
 {
-	if (ball->CheckCollisionWithPlayer(player1)) 
-	{
+	if (ball->CheckCollisionWithPlayer(player1) || ball->CheckCollisionWithPlayer(player2)) {
 		ball->InvertDirectionX();
 	}
 
-	if (ball->CheckCollisionWithPlayer(player2)) 
-{
-		ball->InvertDirectionX();
+	if (ball->CheckCollisionWithLeftWall() || ball->CheckCollisionWithRightWall()) {
+		// TODO : Logique pour marquer un point ou réinitialiser la balle
 	}
 }
 

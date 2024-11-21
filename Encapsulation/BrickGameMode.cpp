@@ -45,7 +45,6 @@ void BrickGameMode::CheckCollision()
 	{
 		ball->InvertDirectionX();
 	}
-
 }
 
 void BrickGameMode::EndGameMode()

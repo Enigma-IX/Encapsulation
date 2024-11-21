@@ -81,9 +81,44 @@ void GameManager::SelectGameMode(int gameType)
 	}	
 }
 
+bool GameManager::SetGameMode(int argc, char* argv[])
+{
+	if (argc > 2) {
+		std::string gameModeArg = argv[2];
+		if (gameModeArg.rfind("-Mode=", 0) == 0) {
+			std::string mode = gameModeArg.substr(6); 
+			if (mode == "DEMO") {
+				SelectGameMode(GameMode::DEMO);
+			}
+			else if (mode == "PONG") {
+				SelectGameMode(GameMode::PONG);
+			}
+			else if (mode == "BRICK") {
+				SelectGameMode(GameMode::BRICK);
+			}
+			else {
+				std::cerr << "Invalid game mode. Valid options are: DEMO, PONG, or BRICK." << std::endl;
+				return false;
+			}
+			return true;
+		}
+		else {
+			std::cerr << "Invalid argument for game mode. Use -Mode=<ModeName>." << std::endl;
+			return false;
+		}
+	}
+
+	// Mode de jeu par défaut si aucun argument n'est fourni
+	SelectGameMode(GameMode::DEMO);
+	return true;
+}
+
 void GameManager::InitGame(int argc, char* argv[])
 {	
 	if (!SetWindowType(argc, argv))
+		return;
+	
+	if (!SetGameMode(argc, argv))
 		return;
 
 	if (!window->initialize() || !window->createWindow(WIN_WIDTH, WIN_HEIGHT, title)) {
@@ -93,7 +128,7 @@ void GameManager::InitGame(int argc, char* argv[])
 	
 	inputManager = window->createInputManager();
  
-	SelectGameMode(GameMode::PONG);
+	//SelectGameMode(GameMode::BRICK);
 	gameMode->InitGameMode();
 }
 
@@ -142,7 +177,7 @@ void GameManager::EndGame()
 void GameManager::WipeGame()
 {
 
-	EndGame();
+	gameMode->WipeGameMode();
 	window->close();
 }
 

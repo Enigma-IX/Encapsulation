@@ -22,4 +22,6 @@ void RaylibInputManager::Update() {
     user2Keys[1] = IsKeyDown(KEY_S);     // Bas
     user2Keys[2] = IsKeyDown(KEY_Q);     // Gauche
     user2Keys[3] = IsKeyDown(KEY_D);     // Droite
+
+    spacePressed = IsKeyDown(KEY_SPACE);
 }

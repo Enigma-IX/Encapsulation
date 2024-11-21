@@ -5,12 +5,14 @@
 class ScoreCounter
 {
 public:
-	ScoreCounter();
-	void Init();
+	ScoreCounter(float posX, float posY);
+	void Init(float posX, float posY);
 	~ScoreCounter();
 
 	void Update();
 	void Draw();
+	void AddToScore(int point);
+	int GetScore();
 
 private:
 	Text* scoreText;

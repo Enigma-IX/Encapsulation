@@ -17,4 +17,5 @@ public:
 	bool loadFont(const std::string& fontPath, int fontSize);
 	void loadText(const std::string& text) override;
 	void render() const override;
+	std::pair<int, int> getSize() const;
 };

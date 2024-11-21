@@ -3,7 +3,7 @@
 
 class Player {
 public:
-    Player(int userId, float startX, float startY); // Position initiale minimale
+    Player(int userId, float startX, float startY, bool isVertical); // Position initiale minimale
     ~Player();
 
     void Init(float startX, float startY);
@@ -21,7 +21,9 @@ private:
     int userId;      
     float speed;  
 
-    static constexpr float DEFAULT_WIDTH = 20.0f;  // Largeur par défaut
-    static constexpr float DEFAULT_HEIGHT = 100.0f; // Hauteur par défaut
-    static constexpr float DEFAULT_SPEED = 300.0f;  // Vitesse par défaut
+    static constexpr float DEFAULT_WIDTH = 20.0f;
+    static constexpr float DEFAULT_HEIGHT = 105.0f;
+    static constexpr float DEFAULT_SPEED = 600.0f;
+
+    bool isVertical;
 };

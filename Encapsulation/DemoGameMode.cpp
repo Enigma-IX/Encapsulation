@@ -13,8 +13,9 @@ DemoGameMode::~DemoGameMode()
 bool DemoGameMode::InitGameMode()
 {
 	fpsCounter = new FPSCounter();
-	ball = new Ball();
-	scoreCounter = new ScoreCounter();
+	scoreCounter = new ScoreCounter(WIN_WIDTH / 4, WIN_HEIGHT);
+	ball = new Ball(WIN_WIDTH / 2, WIN_HEIGHT / 2);
+  
 	return true;
 }
 
@@ -38,12 +39,17 @@ void DemoGameMode::CheckCollision()
 		ball->InvertDirectionX();
 	}
 
-	if (ball->CheckCollisionWithTopOrBottomWall()) {
+	if (ball->CheckCollisionWithTopWall() || ball->CheckCollisionWithBottomWall()) {
 		ball->InvertDirectionY();
 	}
 }
 
 void DemoGameMode::EndGameMode()
+{
+	//TO DO: Logique de fin de partie
+}
+
+void DemoGameMode::WipeGameMode()
 {
 	delete ball;
 	delete fpsCounter;

@@ -23,5 +23,7 @@ public:
 	void Draw() override;
 	void CheckCollision() override;
 	void EndGameMode() override;
+	void WipeGameMode() override;
+
 };
 

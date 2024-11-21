@@ -69,10 +69,10 @@ void GameManager::SelectGameMode(int gameType)
 		gameMode = new DemoGameMode();
 		break;
 	case GameMode::PONG:
-		gameMode = new DemoGameMode();
+		gameMode = new PongGameMode();
 		break;
 	case GameMode::BRICK:
-		gameMode = new DemoGameMode();
+		gameMode = new BrickGameMode();
 		break;
 	default:
 		std::cerr << "Invalid choice, defaulting to Demo Game Mode.\n";
@@ -91,44 +91,46 @@ void GameManager::InitGame(int argc, char* argv[])
 		return;
 	}
 	
-	SelectGameMode(GameMode::DEMO);
+	inputManager = window->createInputManager();
+ 
+	SelectGameMode(GameMode::BRICK);
 	gameMode->InitGameMode();
 }
 
 void GameManager::StartMainLoop()
 {
-	SDL_Event event; // Input Manager
-	while (window->isOpen()) {
-
-		// Input Manager
-		SDL_PollEvent(&event);
-		if (event.type == SDL_QUIT)
-		{
-			WipeGame();
-			return;
-		}
-
+	while (window->isOpen()) 
+	{
 		Update();
 	}
 }
 
 void GameManager::Update()
 {
-	TimeManager::Instance().Update();
+	Draw();
 
+	TimeManager::Instance().Update();
+	
 	gameMode->UpdateGameMode();
 
-	Draw();
+	inputManager->Update();	
 }
 
 void GameManager::Draw()
 {
 	window->clear();
-
+	
+	CheckCollisions();
 	gameMode->Draw();
 	
 	window->display();
 }
+
+void GameManager::CheckCollisions() 
+{
+	gameMode->CheckCollision();
+}
+
 
 void GameManager::EndGame()
 {
@@ -138,6 +140,7 @@ void GameManager::EndGame()
 
 void GameManager::WipeGame()
 {
+
 	EndGame();
 	window->close();
 }
@@ -146,6 +149,11 @@ void GameManager::WipeGame()
 Window* GameManager::getWindow()
 {
 	return window;
+}
+
+InputManager* GameManager::getInputManager()
+{
+	return inputManager;
 }
 
 GameManager::~GameManager()

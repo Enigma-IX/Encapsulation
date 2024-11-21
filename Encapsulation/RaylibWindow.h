@@ -5,6 +5,7 @@
 #include "Window.h"
 #include "raylib.h"
 #include <string>
+#include "InputManager.h"
 
 class RaylibWindow : public Window {
 private:
@@ -26,4 +27,6 @@ public:
   
     void drawSprite(const Sprite& sprite) override;
     Sprite* createSprite() override;
+
+    InputManager* createInputManager() override;
 };

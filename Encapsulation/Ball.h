@@ -1,6 +1,8 @@
 #pragma once
 #include "Sprite.h"
 #include "Window.h"
+#include "Player.h"
+
 class Ball
 {
 public:
@@ -10,6 +12,8 @@ public:
 
 	void Update();
 	void Draw() const;
+	bool CheckCollisionWithPlayer(Player* player);
+	void InvertDirectionX();
 
 private:
 	Sprite* spriteBall;

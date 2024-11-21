@@ -3,8 +3,11 @@
 #include <iostream>
 #include "framework.h"
 
+#include "InputManager.h"
 #include "GameMode.h"
 #include "DemoGameMode.h"
+#include "PongGameMode.h"
+#include "BrickGameMode.h"
 
 
 class GameManager
@@ -12,10 +15,11 @@ class GameManager
 private:
 	static GameManager* instance;  // Singleton instance
 
+	InputManager* inputManager;
 	Window* window;
 	GameMode* gameMode;
 
-	GameManager(); // Constructeur privé
+	GameManager(); // Constructeur privï¿½
 
 	const char* title;
 
@@ -29,10 +33,12 @@ public:
 	void InitGame(int argc, char* argv[]);
 	void StartMainLoop();
 	void Update();
+	void CheckCollisions();
 	void Draw();
 	void EndGame();
 	void WipeGame();
 
+	InputManager* getInputManager();
 	Window* getWindow();
 
 	~GameManager();

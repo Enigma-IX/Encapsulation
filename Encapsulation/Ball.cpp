@@ -40,6 +40,28 @@ void Ball::Update()
     spriteBall->SetPosition(x, y);
 }
 
+bool Ball::CheckCollisionWithPlayer(Player* player) {
+    std::pair<float, float> ballPosition = spriteBall->GetPosition();
+    std::pair<float, float> playerPosition(player->GetX(), player->GetY());
+
+    float ballX = ballPosition.first;
+    float ballY = ballPosition.second;
+    float ballDiameter = radius * 2;
+
+    float playerX = playerPosition.first;
+    float playerY = playerPosition.second;
+
+    // Vérifie si la balle est dans la zone horizontale et verticale du joueur
+    bool collisionX = ballX + ballDiameter > playerX && ballX < playerX + player->GetWidth();
+    bool collisionY = ballY + ballDiameter > playerY && ballY < playerY + player->GetHeight();
+
+    return collisionX && collisionY;
+}
+
+void Ball::InvertDirectionX() {
+    dirX = -dirX;
+}
+
 void Ball::Draw() const
 {
     GameManager::Instance().getWindow()->drawSprite(*spriteBall);

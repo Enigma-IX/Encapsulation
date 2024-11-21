@@ -6,6 +6,7 @@
 #include <SDL.h>
 
 #include <string>
+#include "InputManager.h"
 
 
 class SDLWindow : public Window {
@@ -31,4 +32,6 @@ public:
     Text* createText() override;
 
 	SDL_Renderer* getRenderer() const { return renderer; }
+
+    InputManager* createInputManager() override;
 };

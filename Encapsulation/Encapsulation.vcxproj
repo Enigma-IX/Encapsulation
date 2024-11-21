@@ -414,14 +414,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="BrickGameMode.cpp" />
     <ClCompile Include="DemoGameMode.cpp" />
     <ClCompile Include="FPSCounter.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameMode.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PongGameMode.cpp" />
+    <ClCompile Include="RaylibInputManager.cpp" />
     <ClCompile Include="RaylibSprite.cpp" />
     <ClCompile Include="RaylibText.cpp" />
     <ClCompile Include="RaylibWindow.cpp" />
+    <ClCompile Include="SDLInputManager.cpp" />
     <ClCompile Include="ScoreCounter.cpp" />
     <ClCompile Include="SDLSprite.cpp" />
     <ClCompile Include="SDLText.cpp" />
@@ -433,15 +439,21 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="BrickGameMode.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="DemoGameMode.h" />
     <ClInclude Include="FPSCounter.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameMode.h" />
+    <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PongGameMode.h" />
+    <ClInclude Include="RaylibInputManager.h" />
     <ClInclude Include="RaylibSprite.h" />
     <ClInclude Include="RaylibText.h" />
     <ClInclude Include="RaylibWindow.h" />
+    <ClInclude Include="SDLInputManager.h" />
     <ClInclude Include="ScoreCounter.h" />
     <ClInclude Include="SDLSprite.h" />
     <ClInclude Include="SDLText.h" />

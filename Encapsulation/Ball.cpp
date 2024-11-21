@@ -35,6 +35,14 @@ Ball::~Ball()
 
 void Ball::Update()
 {
+	if (stopTimer > 0) {
+		stopTimer -= TimeManager::Instance().GetDeltaTime();
+		if (stopTimer <= 0) {
+			SetRandomDirection(); // Redémarre la balle après l'arrêt
+		}
+		return;
+	}
+
     std::pair<float, float> position = spriteBall->GetPosition();
     float x = position.first;
     float y = position.second;
@@ -102,20 +110,6 @@ bool Ball::CheckCollisionWithPlayer(Player* player) {
 }
 
 
-/*
-void Ball::SetRandomDirection() {
-	std::random_device rd;
-	std::mt19937 gen(rd());
-	std::uniform_real_distribution<> distr(-1.0, 1.0);
-
-	float randomX = distr(gen);
-	float randomY = distr(gen);
-
-	float magnitude = std::sqrt(randomX * randomX + randomY * randomY);
-	dirX = (randomX / magnitude) * speed;
-	dirY = (randomY / magnitude) * speed;
-}*/
-
 
 void Ball::SetRandomDirection() {
 	std::random_device rd;
@@ -152,12 +146,15 @@ void Ball::InvertDirectionY()
 void Ball::Reset()
 {
 	spriteBall->SetPosition(startPosX, startPosY);
+	Stop();
+	stopTimer = stopDuration;
     SetRandomDirection();
 }
 
 void Ball::Stop()
 {
-    dirY, dirX = 0, 0;
+	dirY = 0;
+	dirX = 0;
 	spriteBall->SetPosition(startPosX, startPosY);
 }
 

@@ -11,7 +11,7 @@ ScoreCounter::ScoreCounter(float posX, float posY)
 
 void ScoreCounter::Init(float posX, float posY)
 {
-	if (!scoreText->loadFont("Montserrat-Regular.ttf", 18)) {
+	if (!scoreText->loadFont("Montserrat-Regular.ttf", 28)) {
 		std::cerr << "Failed to load Font text Score!" << std::endl;
 		delete scoreText;
 		return;

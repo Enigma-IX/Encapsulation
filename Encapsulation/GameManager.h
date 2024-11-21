@@ -30,6 +30,7 @@ public:
 	bool SetWindowType(int argc, char* argv[]);
 
 	void SelectGameMode(int gameType);
+	bool SetGameMode(int argc, char* argv[]);
 	void InitGame(int argc, char* argv[]);
 	void StartMainLoop();
 	void Update();

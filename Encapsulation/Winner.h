@@ -5,7 +5,7 @@
 class Winner
 {
 public:
-	Winner(float posX, float posY, const std::string& winner = " Win !");
+	Winner(float posX, float posY, const std::string& winner = "");
 	void Init(float posX, float posY, const std::string& winner);
 	~Winner();
 
@@ -16,5 +16,6 @@ public:
 private:
 	Text* winnerText;
 	std::string winnerPlayer = "";
+	bool hasToBeDrawn = false;
 };
 

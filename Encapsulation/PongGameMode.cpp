@@ -22,7 +22,7 @@ bool PongGameMode::InitGameMode()
 	player1 = new Player(1, WIN_WIDTH - 70.0f, WIN_HEIGHT / 2 - 50.0f);
 	player2 = new Player(2, 50.0f, WIN_HEIGHT / 2 - 50.0f);
 
-	winner = new Winner(WIN_WIDTH / 2, 2 * WIN_HEIGHT / 3, "YA");
+	winner = new Winner(WIN_WIDTH / 2, 2 * WIN_HEIGHT / 3);
 
 	return true;
 
@@ -55,6 +55,7 @@ void PongGameMode::Draw()
 
 	player1->Draw();
 	player2->Draw();
+
 
 	winner->Draw();
 }
@@ -90,8 +91,6 @@ void PongGameMode::EndGameMode()
 	else
 		winner->SetWinner("Nobody");
 	return;
-
-	WipeGameMode();
 }
 
 void PongGameMode::WipeGameMode()

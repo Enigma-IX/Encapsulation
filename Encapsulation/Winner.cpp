@@ -17,7 +17,7 @@ void Winner::Init(float posX, float posY, const std::string& winner)
 		return;
 	}
 	winnerText->setPosition(posX, posY);
-	std::string string = " Win !";
+	std::string string = " ";
 	winnerText->loadText(string);
 }
 
@@ -34,12 +34,14 @@ void Winner::Update()
 
 void Winner::Draw()
 {
-	GameManager::Instance().getWindow()->drawText(*winnerText);
+	if (hasToBeDrawn)
+		GameManager::Instance().getWindow()->drawText(*winnerText);
 }
 
 void Winner::SetWinner(const std::string& winner)
 {
 	winnerPlayer = winner;
+	hasToBeDrawn = true;
 }
 
 

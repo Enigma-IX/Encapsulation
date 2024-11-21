@@ -142,7 +142,7 @@ void GameManager::EndGame()
 void GameManager::WipeGame()
 {
 
-	EndGame();
+	gameMode->WipeGameMode();
 	window->close();
 }
 

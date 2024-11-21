@@ -6,8 +6,8 @@
 class GameTimer
 {
 public:
-	GameTimer(float posX, float posY);
-	void Init(float posX, float posY);
+	GameTimer(float posX, float posY, int duration = 10);
+	void Init(float posX, float posY, int duration);
 	~GameTimer();
 
 	void Update();

@@ -4,15 +4,17 @@
 #include "framework.h"
 
 
-GameTimer::GameTimer(float posX, float posY) : startTime(120)
+GameTimer::GameTimer(float posX, float posY, int duration)
 {
 	timerText = GameManager::Instance().getWindow()->createText();
-	Init(posX, posY);
+	Init(posX, posY, duration);
 }
 
-void GameTimer::Init(float posX, float posY)
+void GameTimer::Init(float posX, float posY, int duration)
 {
-	if (!timerText->loadFont("Montserrat-Regular.ttf", 18)) {
+	startTime = duration;
+
+	if (!timerText->loadFont("Montserrat-Regular.ttf", 28)) {
 		std::cerr << "Failed to load Font text Score!" << std::endl;
 		delete timerText;
 		return;

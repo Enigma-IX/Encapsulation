@@ -22,6 +22,7 @@ public:
 	void InvertDirectionY();
 	void Reset();
 	void Stop();
+	Sprite* GetSprite();
 
 private:
 	Sprite* spriteBall;

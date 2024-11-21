@@ -18,8 +18,27 @@ bool BrickGameMode::InitGameMode()
 
 	player1 = new Player(1, WIN_WIDTH / 2, WIN_HEIGHT - 50, false);
 
+	InitBricks();
+
 	return true;
 }
+
+void BrickGameMode::InitBricks() {
+	const int rows = 5;
+	const int cols = 10;
+
+	float brickWidth = WIN_WIDTH / cols;
+	float brickHeight = 30.0f; // Hauteur arbitraire
+
+	for (int row = 0; row < rows; ++row) {
+		for (int col = 0; col < cols; ++col) {
+			float x = col * brickWidth;
+			float y = row * brickHeight;
+			bricks.push_back(new Brick(x, y, brickWidth - 5.0f, brickHeight - 5.0f)); // Ajout d'un petit espacement
+		}
+	}
+}
+
 
 void BrickGameMode::UpdateGameMode()
 {
@@ -33,6 +52,10 @@ void BrickGameMode::UpdateGameMode()
 
 void BrickGameMode::Draw()
 {
+	for (auto brick : bricks) {
+		brick->Draw();
+	}
+
 	ball->Draw();
 	fpsCounter->Draw();
 	scoreCounter->Draw();
@@ -61,6 +84,14 @@ void BrickGameMode::CheckCollision()
 	{
 		ball->Reset();
 	}
+
+	for (auto brick : bricks) {
+		if (!brick->IsDestroyed() && brick->CheckCollisionWithBall(ball->GetSprite())) {
+			brick->Destroy();
+			ball->InvertDirectionY(); 
+			break; 
+		}
+	}
 }
 
 void BrickGameMode::EndGameMode()
@@ -76,6 +107,11 @@ void BrickGameMode::WipeGameMode()
 	delete scoreCounter;
 
 	delete player1;
+
+	for (auto brick : bricks) {
+		delete brick;
+	}
+	bricks.clear();
 
 }
 

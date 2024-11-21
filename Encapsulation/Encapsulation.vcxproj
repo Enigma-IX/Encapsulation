@@ -415,6 +415,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
+    <ClCompile Include="Brick.cpp" />
     <ClCompile Include="BrickGameMode.cpp" />
     <ClCompile Include="DemoGameMode.cpp" />
     <ClCompile Include="FPSCounter.cpp" />
@@ -441,6 +442,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
+    <ClInclude Include="Brick.h" />
     <ClInclude Include="BrickGameMode.h" />
     <ClInclude Include="config.h" />
     <ClInclude Include="DemoGameMode.h" />
@@ -465,11 +467,6 @@
     <ClInclude Include="Text.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Window.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Midl Include="Brick.idl">
-      <SubType>Designer</SubType>
-    </Midl>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

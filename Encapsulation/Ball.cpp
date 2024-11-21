@@ -171,6 +171,11 @@ void Ball::Stop()
 	spriteBall->SetPosition(startPosX, startPosY);
 }
 
+Sprite* Ball::GetSprite()
+{
+	return spriteBall;
+}
+
 void Ball::Draw() const
 {
     GameManager::Instance().getWindow()->drawSprite(*spriteBall);

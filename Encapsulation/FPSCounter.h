@@ -16,6 +16,5 @@ private:
 	Text* fpsText;
 	double FPS;
 	double elapsedTime;
-	int frameCount;
 };
 

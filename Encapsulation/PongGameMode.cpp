@@ -14,7 +14,10 @@ bool PongGameMode::InitGameMode()
 {
 	fpsCounter = new FPSCounter();
 	ball = new Ball();
-	scoreCounter = new ScoreCounter();
+	timer = new GameTimer(WIN_WIDTH / 2, 0);
+
+	scoreCounterP1 = new ScoreCounter(WIN_WIDTH / 4, WIN_HEIGHT - 50);
+	scoreCounterP2 = new ScoreCounter(3 * WIN_WIDTH / 4, WIN_HEIGHT - 50);
 
 	player1 = new Player(1, WIN_WIDTH - 70.0f, WIN_HEIGHT / 2 - 50.0f);
 	player2 = new Player(2, 50.0f, WIN_HEIGHT / 2 - 50.0f);
@@ -26,7 +29,10 @@ void PongGameMode::UpdateGameMode()
 {
 	ball->Update();
 	fpsCounter->Update();
-	scoreCounter->Update();
+	timer->Update();
+
+	scoreCounterP1->Update();
+	scoreCounterP2->Update();
 
 	player1->Update();
 	player2->Update();
@@ -37,7 +43,10 @@ void PongGameMode::Draw()
 {
 	ball->Draw();
 	fpsCounter->Draw();
-	scoreCounter->Draw();
+	timer->Draw();
+
+	scoreCounterP1->Draw();
+	scoreCounterP2->Draw();
 
 	player1->Draw();
 	player2->Draw();
@@ -58,11 +67,23 @@ void PongGameMode::CheckCollision()
 
 void PongGameMode::EndGameMode()
 {
+	//TO DO: Logique de cleanup avant de Wipe
+	return;
+
+	WipeGameMode();
+}
+
+void PongGameMode::WipeGameMode()
+{
 	delete ball;
 	delete fpsCounter;
-	delete scoreCounter;
+	delete timer;
+
+	delete scoreCounterP1;
+	delete scoreCounterP2;
 
 	delete player1;
 	delete player2;
+
 }
 

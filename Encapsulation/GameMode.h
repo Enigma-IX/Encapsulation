@@ -22,6 +22,7 @@ public:
 	virtual void Draw() = 0;
 	virtual void CheckCollision() = 0;
 	virtual void EndGameMode() = 0;
+	virtual void WipeGameMode() = 0;
 
 	enum GameModeType
 	{

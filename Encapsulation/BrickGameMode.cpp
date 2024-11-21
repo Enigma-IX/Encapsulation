@@ -13,7 +13,7 @@ bool BrickGameMode::InitGameMode()
 {
 	fpsCounter = new FPSCounter();
 	ball = new Ball();
-	scoreCounter = new ScoreCounter();
+	scoreCounter = new ScoreCounter(WIN_WIDTH / 4, WIN_HEIGHT);
 
 	player1 = new Player(1, WIN_WIDTH - 70.0f, WIN_HEIGHT / 2 - 50.0f);
 
@@ -50,10 +50,17 @@ void BrickGameMode::CheckCollision()
 
 void BrickGameMode::EndGameMode()
 {
+	//TO DO: Logique de cleanup avant de Wipe
+	WipeGameMode();
+}
+
+void BrickGameMode::WipeGameMode()
+{
 	delete ball;
 	delete fpsCounter;
 	delete scoreCounter;
 
 	delete player1;
+
 }
 

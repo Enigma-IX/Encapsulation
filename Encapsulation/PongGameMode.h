@@ -4,6 +4,7 @@
 #include "Ball.h"
 #include "FPSCounter.h"
 #include "ScoreCounter.h"
+#include "GameTimer.h"
 
 class PongGameMode : public GameMode
 {
@@ -11,7 +12,10 @@ private:
 
 	Ball* ball;
 	FPSCounter* fpsCounter;
-	ScoreCounter* scoreCounter;
+	GameTimer* timer;
+
+	ScoreCounter* scoreCounterP1;
+	ScoreCounter* scoreCounterP2;
 
 	Player* player1;
 	Player* player2;
@@ -26,5 +30,7 @@ public:
 	void Draw() override;
 	void CheckCollision() override;
 	void EndGameMode() override;
+	void WipeGameMode() override;
+
 };
 

@@ -32,6 +32,11 @@ void DemoGameMode::Draw()
 	scoreCounter->Draw();
 }
 
+void DemoGameMode::CheckCollision()
+{
+
+}
+
 void DemoGameMode::EndGameMode()
 {
 	delete ball;

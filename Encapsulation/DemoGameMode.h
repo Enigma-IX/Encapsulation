@@ -21,6 +21,7 @@ public:
 	bool InitGameMode() override;
 	void UpdateGameMode() override;
 	void Draw() override;
+	void CheckCollision() override;
 	void EndGameMode() override;
 };
 

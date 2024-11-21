@@ -20,6 +20,7 @@ public:
 	virtual bool InitGameMode() = 0;
 	virtual void UpdateGameMode() = 0;
 	virtual void Draw() = 0;
+	virtual void CheckCollision() = 0;
 	virtual void EndGameMode() = 0;
 
 	enum GameModeType

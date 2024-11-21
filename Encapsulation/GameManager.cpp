@@ -91,7 +91,7 @@ void GameManager::InitGame(int argc, char* argv[])
 		return;
 	}
 	
-	inputManager = window.createInputManager();
+	inputManager = window->createInputManager();
  
 	SelectGameMode(GameMode::DEMO);
 	gameMode->InitGameMode();
@@ -128,8 +128,7 @@ void GameManager::Draw()
 
 void GameManager::CheckCollisions() 
 {
-
-	
+	gameMode->CheckCollision();
 }
 
 

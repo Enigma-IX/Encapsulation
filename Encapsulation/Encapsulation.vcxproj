@@ -333,6 +333,13 @@
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;raylib.lib;raylibdll.lib;winmm.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)\SDL_ttf\lib;$(ProjectDir)\SDL_Image\lib;$(ProjectDir)\SDL2\lib;$(ProjectDir)\raylib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /F "$(ProjectDir)*.dll" "$(OutDir)"
+
+
+xcopy /Y /F "$(ProjectDir)*.ttf" "$(OutDir)"
+xcopy /Y /F "$(ProjectDir)*.png" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-Raylib|x64'">
     <ClCompile>
@@ -348,6 +355,13 @@
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;raylib.lib;raylibdll.lib;winmm.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)\SDL_ttf\lib;$(ProjectDir)\SDL_Image\lib;$(ProjectDir)\SDL2\lib;$(ProjectDir)\raylib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /F "$(ProjectDir)*.dll" "$(OutDir)"
+
+
+xcopy /Y /F "$(ProjectDir)*.ttf" "$(OutDir)"
+xcopy /Y /F "$(ProjectDir)*.png" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug-SDL|x64'">
     <ClCompile>
@@ -363,6 +377,13 @@
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;raylib.lib;raylibdll.lib;winmm.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(ProjectDir)\SDL_ttf\lib;$(ProjectDir)\SDL_Image\lib;$(ProjectDir)\SDL2\lib;$(ProjectDir)\raylib\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /F "$(ProjectDir)*.dll" "$(OutDir)"
+
+
+xcopy /Y /F "$(ProjectDir)*.ttf" "$(OutDir)"
+xcopy /Y /F "$(ProjectDir)*.png" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -379,6 +400,13 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /F "$(ProjectDir)*.dll" "$(OutDir)"
+
+
+xcopy /Y /F "$(ProjectDir)*.ttf" "$(OutDir)"
+xcopy /Y /F "$(ProjectDir)*.png" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-Raylib|x64'">
     <ClCompile>
@@ -395,6 +423,13 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /F "$(ProjectDir)*.dll" "$(OutDir)"
+
+
+xcopy /Y /F "$(ProjectDir)*.ttf" "$(OutDir)"
+xcopy /Y /F "$(ProjectDir)*.png" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-SDL|x64'">
     <ClCompile>
@@ -411,6 +446,13 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /Y /F "$(ProjectDir)*.dll" "$(OutDir)"
+
+
+xcopy /Y /F "$(ProjectDir)*.ttf" "$(OutDir)"
+xcopy /Y /F "$(ProjectDir)*.png" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />

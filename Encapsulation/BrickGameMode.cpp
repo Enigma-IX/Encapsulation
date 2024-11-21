@@ -58,8 +58,7 @@ void BrickGameMode::CheckCollision()
 
 void BrickGameMode::EndGameMode()
 {
-	//TO DO: Logique de cleanup avant de Wipe
-	WipeGameMode();
+	//TO DO: Logique de fin de partie
 }
 
 void BrickGameMode::WipeGameMode()

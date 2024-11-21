@@ -5,18 +5,21 @@
 #include "FPSCounter.h"
 #include "ScoreCounter.h"
 
-
-class DemoGameMode : public GameMode
+class PongGameMode : public GameMode
 {
 private:
 
 	Ball* ball;
 	FPSCounter* fpsCounter;
 	ScoreCounter* scoreCounter;
-	
+
+	Player* player1;
+	Player* player2;
+
+
 public:
-	DemoGameMode();
-	~DemoGameMode();
+	PongGameMode();
+	~PongGameMode();
 
 	bool InitGameMode() override;
 	void UpdateGameMode() override;

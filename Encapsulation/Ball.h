@@ -1,15 +1,20 @@
 #pragma once
 #include "Sprite.h"
 #include "Window.h"
+#include "Player.h"
+
 class Ball
 {
 public:
-	Ball(Sprite* sprite, float radius, float dx, float dy);
+	Ball();
+	void Init();
 	~Ball();
 
-	void Update(float deltaTime, float windowWidth, float windowHeight);
-	void Draw(Window& window) const;
-	void Destroy();
+	void Update();
+	void Draw() const;
+	bool CheckCollisionWithPlayer(Player* player);
+	void InvertDirectionX();
+
 private:
 	Sprite* spriteBall;
 	float dirX, dirY;

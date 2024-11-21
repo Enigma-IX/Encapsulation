@@ -11,6 +11,9 @@ public:
 	void Update();
 
 	double GetDeltaTime() const { return deltaTime; }
+	double GetFrameRate() const;
+	double GetTotalTime() const;
+
 
 private:
 	// Constructeur privé pour le Singleton
@@ -18,5 +21,6 @@ private:
 
 	std::chrono::high_resolution_clock::time_point lastTimePoint;
 	double deltaTime;
+	double totalTime;
 };
 

@@ -3,9 +3,9 @@
 #include "GameManager.h"
 
 
-int main() 
+int main(int argc, char* argv[])
 {
-	GameManager::Instance().InitGame();
+	GameManager::Instance().InitGame(argc, argv);
 	GameManager::Instance().StartMainLoop();
     return 0;
 }

@@ -5,18 +5,19 @@
 #include "FPSCounter.h"
 #include "ScoreCounter.h"
 
-
-class DemoGameMode : public GameMode
+class BrickGameMode : public GameMode
 {
 private:
 
 	Ball* ball;
 	FPSCounter* fpsCounter;
 	ScoreCounter* scoreCounter;
-	
+
+	Player* player1;
+
 public:
-	DemoGameMode();
-	~DemoGameMode();
+	BrickGameMode();
+	~BrickGameMode();
 
 	bool InitGameMode() override;
 	void UpdateGameMode() override;
@@ -24,4 +25,6 @@ public:
 	void CheckCollision() override;
 	void EndGameMode() override;
 };
+
+
 

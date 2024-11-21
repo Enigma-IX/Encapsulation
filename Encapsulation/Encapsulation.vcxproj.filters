@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -13,96 +13,186 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\SDL">
+      <UniqueIdentifier>{01bc3561-7a1b-443e-8c8e-32408722bc44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Raylib">
+      <UniqueIdentifier>{2b9351c6-9ef1-449e-9d66-46336306f485}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Abstract">
+      <UniqueIdentifier>{1f4a148c-8120-41a3-a6f1-781519d308fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Elements">
+      <UniqueIdentifier>{52725468-827a-4f92-ad46-51dcab8a7a8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameModes">
+      <UniqueIdentifier>{57a522ae-7277-446b-b39a-43df5bc9c2c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Managers">
+      <UniqueIdentifier>{e038ef61-dad0-422d-9791-7607af23ea7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Abstract">
+      <UniqueIdentifier>{2e07464b-f99e-4b1e-bb05-686d7caec048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Elements">
+      <UniqueIdentifier>{b460ee61-051d-4fed-9c99-2e8ce8ce0166}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameModes">
+      <UniqueIdentifier>{045fa69c-a434-4231-8621-c9b439df2387}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{5d257091-2ae0-4fe7-92d2-712893b6fe69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Raylib">
+      <UniqueIdentifier>{eb279148-fb02-480f-84ad-9afc17720bf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SDL">
+      <UniqueIdentifier>{ef4ae4e6-ae0b-4b40-b90a-41704cb89da0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RaylibWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RaylibSprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLSprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TimeManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Text.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SDLText.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RaylibText.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Ball.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickGameMode.cpp">
+      <Filter>Source Files\GameModes</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoGameMode.cpp">
+      <Filter>Source Files\GameModes</Filter>
     </ClCompile>
     <ClCompile Include="FPSCounter.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="PongGameMode.cpp">
+      <Filter>Source Files\GameModes</Filter>
+    </ClCompile>
+    <ClCompile Include="RaylibInputManager.cpp">
+      <Filter>Source Files\Raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="RaylibSprite.cpp">
+      <Filter>Source Files\Raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="RaylibText.cpp">
+      <Filter>Source Files\Raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="RaylibWindow.cpp">
+      <Filter>Source Files\Raylib</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreCounter.cpp">
+      <Filter>Source Files\Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLInputManager.cpp">
+      <Filter>Source Files\SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLSprite.cpp">
+      <Filter>Source Files\SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLText.cpp">
+      <Filter>Source Files\SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="SDLWindow.cpp">
+      <Filter>Source Files\SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Source Files\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Source Files\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source Files\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="GameMode.cpp">
+      <Filter>Source Files\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>Source Files\Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RaylibWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RaylibSprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLSprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="framework.h">
       <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TimeManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Text.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SDLText.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RaylibText.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="config.h">
       <Filter>Resource Files</Filter>
     </ClInclude>
-    <ClInclude Include="Ball.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="SDLInputManager.h">
+      <Filter>Header Files\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLSprite.h">
+      <Filter>Header Files\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLText.h">
+      <Filter>Header Files\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="SDLWindow.h">
+      <Filter>Header Files\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="RaylibWindow.h">
+      <Filter>Header Files\Raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="RaylibSprite.h">
+      <Filter>Header Files\Raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="RaylibText.h">
+      <Filter>Header Files\Raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="RaylibInputManager.h">
+      <Filter>Header Files\Raylib</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
+      <Filter>Header Files\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Header Files\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Header Files\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreCounter.h">
+      <Filter>Header Files\Elements</Filter>
     </ClInclude>
     <ClInclude Include="FPSCounter.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>Header Files\Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoGameMode.h">
+      <Filter>Header Files\GameModes</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickGameMode.h">
+      <Filter>Header Files\GameModes</Filter>
+    </ClInclude>
+    <ClInclude Include="PongGameMode.h">
+      <Filter>Header Files\GameModes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameMode.h">
+      <Filter>Header Files\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

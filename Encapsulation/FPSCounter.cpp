@@ -1,8 +1,22 @@
 #include "FPSCounter.h"
+#include "GameManager.h"
 
-FPSCounter::FPSCounter(Text* texte) : frameCount(0), elapsedTime(0.0), FPS(0.0)
+FPSCounter::FPSCounter() : elapsedTime(0.0), FPS(0.0)
 {
-	fpsText = texte;
+	fpsText = GameManager::Instance().getWindow()->createText();
+	Init();
+}
+
+void FPSCounter::Init()
+{
+	if (!fpsText->loadFont("Montserrat-Regular.ttf", 18)) {
+		std::cerr << "Failed to load Font text FPS!" << std::endl;
+		delete fpsText;
+		return;
+	}
+		fpsText->setPosition(0, 0);
+		std::string fpsString = "FPS : 0";
+		fpsText->loadText(fpsString);
 }
 
 FPSCounter::~FPSCounter()
@@ -10,15 +24,13 @@ FPSCounter::~FPSCounter()
 	delete fpsText;
 }
 
-void FPSCounter::Update(double deltaTime)
+void FPSCounter::Update()
 {
-	elapsedTime += deltaTime;
-	frameCount++;
+	elapsedTime += TimeManager::Instance().GetDeltaTime();
 
 	if (elapsedTime >= 1)
 	{
-		FPS = frameCount / elapsedTime;
-		frameCount = 0;
+		FPS = TimeManager::Instance().GetFrameRate();
 		elapsedTime = 0;
 
 		std::string fpsString = "FPS : " + std::to_string(static_cast<int>(FPS));
@@ -26,7 +38,7 @@ void FPSCounter::Update(double deltaTime)
 	}
 }
 
-void FPSCounter::Draw(Window& window)
+void FPSCounter::Draw()
 {
-	window.drawText(*fpsText);
+	GameManager::Instance().getWindow()->drawText(*fpsText);
 }

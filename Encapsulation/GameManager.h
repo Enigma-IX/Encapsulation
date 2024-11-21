@@ -6,6 +6,8 @@
 #include "InputManager.h"
 #include "GameMode.h"
 #include "DemoGameMode.h"
+#include "PongGameMode.h"
+#include "BrickGameMode.h"
 
 
 class GameManager

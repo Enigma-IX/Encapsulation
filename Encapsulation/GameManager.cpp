@@ -69,10 +69,10 @@ void GameManager::SelectGameMode(int gameType)
 		gameMode = new DemoGameMode();
 		break;
 	case GameMode::PONG:
-		gameMode = new DemoGameMode();
+		gameMode = new PongGameMode();
 		break;
 	case GameMode::BRICK:
-		gameMode = new DemoGameMode();
+		gameMode = new BrickGameMode();
 		break;
 	default:
 		std::cerr << "Invalid choice, defaulting to Demo Game Mode.\n";
@@ -93,7 +93,7 @@ void GameManager::InitGame(int argc, char* argv[])
 	
 	inputManager = window->createInputManager();
  
-	SelectGameMode(GameMode::DEMO);
+	SelectGameMode(GameMode::BRICK);
 	gameMode->InitGameMode();
 }
 

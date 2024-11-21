@@ -16,9 +16,12 @@ void Winner::Init(float posX, float posY, const std::string& winner)
 		delete winnerText;
 		return;
 	}
-	winnerText->setPosition(posX, posY);
-	std::string string = " ";
+	std::string string = "Nobody Win !";
 	winnerText->loadText(string);
+
+	int centerX = winnerText->getCenterX(posX * 2);
+	int centerY = winnerText->getCenterY(posY * 2);
+	winnerText->setPosition(centerX, centerY);
 }
 
 Winner::~Winner()

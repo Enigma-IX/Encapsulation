@@ -25,7 +25,7 @@ void GameTimer::Init(float posX, float posY, int duration)
 	std::string string = "Timer : ";
 	timerText->loadText(string);
 
-	int centerX = timerText->getCenterX(WIN_WIDTH);
+	int centerX = timerText->getCenterX(posX*2);
 	timerText->setPosition(centerX, posY);
 }
 

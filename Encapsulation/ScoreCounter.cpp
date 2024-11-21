@@ -16,9 +16,12 @@ void ScoreCounter::Init(float posX, float posY)
 		delete scoreText;
 		return;
 	}
-	scoreText->setPosition(posX, posY);
+
 	std::string string = "Score : 0";
 	scoreText->loadText(string);
+
+	int centerX = scoreText->getCenterX(posX*2);
+	scoreText->setPosition(centerX, posY);
 }
 
 ScoreCounter::~ScoreCounter()

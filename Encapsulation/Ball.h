@@ -19,10 +19,12 @@ public:
 	void InvertDirectionX();
 	void SetRandomDirection();
 	void InvertDirectionY();
+	void Reset();
 
 private:
 	Sprite* spriteBall;
 	float dirX, dirY;
+	float startPosX, startPosY;
 	float speed;
 	float radius;
 };

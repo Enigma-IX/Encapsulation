@@ -28,16 +28,16 @@ ScoreCounter::~ScoreCounter()
 
 void ScoreCounter::Update()
 {
-	// TO DO : Logique de Score
-
-	score += 0;
-
 	std::string fpsString = "Score : " + std::to_string(static_cast<int>(score));
 	scoreText->loadText(fpsString);
-
 }
 
 void ScoreCounter::Draw()
 {
 	GameManager::Instance().getWindow()->drawText(*scoreText);
+}
+
+void ScoreCounter::AddToScore(int point)
+{
+	score += point;
 }

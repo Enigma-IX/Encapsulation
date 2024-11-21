@@ -11,6 +11,7 @@ public:
 
 	void Update();
 	void Draw();
+	void AddToScore(int point);
 
 private:
 	Text* scoreText;

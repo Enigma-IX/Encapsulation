@@ -20,8 +20,12 @@ void Ball::Init(int posX, int posY)
         delete spriteBall;
         return;
     }
+
+    startPosX = posX;
+    startPosY = posY;
+
     spriteBall->SetSize(radius * 2, radius * 2);
-    spriteBall->SetPosition(posX, posY);
+    spriteBall->SetPosition(startPosX, startPosY);
 }
 
 Ball::~Ball()
@@ -104,6 +108,12 @@ void Ball::InvertDirectionX() {
 void Ball::InvertDirectionY()
 {
     dirY = -dirY;
+}
+
+void Ball::Reset()
+{
+	spriteBall->SetPosition(startPosX, startPosY);
+    SetRandomDirection();
 }
 
 void Ball::Draw() const

@@ -58,9 +58,15 @@ void PongGameMode::CheckCollision()
 		ball->InvertDirectionX();
 	}
 
-	if (ball->CheckCollisionWithLeftWall() || ball->CheckCollisionWithRightWall()) {
-		// TODO : Logique pour marquer un point ou réinitialiser la balle
+	if (ball->CheckCollisionWithRightWall()) {
+		ball->Reset();
+		scoreCounterP1->AddToScore(1);
 	}
+
+	if (ball->CheckCollisionWithLeftWall()) {
+		ball->Reset();
+		scoreCounterP2->AddToScore(1);
+	}	
 
 	if (ball->CheckCollisionWithTopOrBottomWall()) {
 		ball->InvertDirectionY();

@@ -46,9 +46,7 @@ void DemoGameMode::CheckCollision()
 
 void DemoGameMode::EndGameMode()
 {
-	//TO DO: Logique de cleanup avant de Wipe
-
-	WipeGameMode();
+	//TO DO: Logique de fin de partie
 }
 
 void DemoGameMode::WipeGameMode()

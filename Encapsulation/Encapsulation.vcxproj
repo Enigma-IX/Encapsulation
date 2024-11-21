@@ -439,6 +439,7 @@
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Winner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
@@ -467,6 +468,7 @@
     <ClInclude Include="Text.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="Winner.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

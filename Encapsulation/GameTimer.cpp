@@ -21,10 +21,11 @@ void GameTimer::Init(float posX, float posY, int duration)
 	}
 	
 	timerText->setPosition(posX, posY);
-	std::string fpsString = "Timer : ";
-	timerText->loadText(fpsString);
 
-	int centerX = timerText->getCenterX(WIN_WIDTH);
+	std::string string = "Timer : ";
+	timerText->loadText(string);
+
+	int centerX = timerText->getCenterX(posX*2);
 	timerText->setPosition(centerX, posY);
 }
 
@@ -42,20 +43,20 @@ void GameTimer::Update()
 		timer = startTime - TimeManager::Instance().GetTotalTime();
 		elapsedTime = 0;
 
-		std::string fpsString;
+		std::string string;
 		if (timer < 1)
 		{
-			fpsString = "Timer : Time's Up!";
+			string = "Timer : Time's Up!";
 			timer = 0;
-			timerText->loadText(fpsString);
+			timerText->loadText(string);
 
 			GameManager::Instance().EndGame();
 			return;
 		}
 		else
 		{
-			fpsString = "Timer : " + std::to_string(static_cast<int>(timer));
-			timerText->loadText(fpsString);
+			string = "Timer : " + std::to_string(static_cast<int>(timer));
+			timerText->loadText(string);
 			return;
 		}
 	}

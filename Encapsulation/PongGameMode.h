@@ -5,6 +5,7 @@
 #include "FPSCounter.h"
 #include "ScoreCounter.h"
 #include "GameTimer.h"
+#include "Winner.h"
 
 class PongGameMode : public GameMode
 {
@@ -19,6 +20,8 @@ private:
 
 	Player* player1;
 	Player* player2;
+
+	Winner* winner;
 
 
 public:

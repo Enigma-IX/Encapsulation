@@ -14,17 +14,20 @@ bool PongGameMode::InitGameMode()
 {
 	fpsCounter = new FPSCounter();
   
-	timer = new GameTimer(WIN_WIDTH / 2, 0, 120);
+	timer = new GameTimer(WIN_WIDTH / 2, 0, 10);
 
-	scoreCounterP1 = new ScoreCounter(WIN_WIDTH / 4, WIN_HEIGHT - 50);
-	scoreCounterP2 = new ScoreCounter(3 * WIN_WIDTH / 4, WIN_HEIGHT - 50);
+	scoreCounterP1 = new ScoreCounter(WIN_WIDTH / 8, WIN_HEIGHT - 50);
+	scoreCounterP2 = new ScoreCounter(7 * WIN_WIDTH / 8, WIN_HEIGHT - 50);
 
 	ball = new Ball(WIN_WIDTH / 2, WIN_HEIGHT / 2);
 
 	player1 = new Player(1, WIN_WIDTH - 70.0f, WIN_HEIGHT / 2 - 50.0f, true);
 	player2 = new Player(2, 50.0f, WIN_HEIGHT / 2 - 50.0f, true);
 
+	winner = new Winner(WIN_WIDTH / 2, 2 * WIN_HEIGHT / 3);
+
 	return true;
+
 }
 
 void PongGameMode::UpdateGameMode()
@@ -39,6 +42,8 @@ void PongGameMode::UpdateGameMode()
 	player1->Update();
 	player2->Update();
 
+	winner->Update();
+
 }
 
 void PongGameMode::Draw()
@@ -52,6 +57,9 @@ void PongGameMode::Draw()
 
 	player1->Draw();
 	player2->Draw();
+
+
+	winner->Draw();
 }
 
 void PongGameMode::CheckCollision()
@@ -78,9 +86,13 @@ void PongGameMode::CheckCollision()
 void PongGameMode::EndGameMode()
 {
 	ball->Stop();
+	if (scoreCounterP1->GetScore() > scoreCounterP2->GetScore())
+		winner->SetWinner("Player 1");
+	else if (scoreCounterP1->GetScore() < scoreCounterP2->GetScore())
+		winner->SetWinner("Player 2");
+	else
+		winner->SetWinner("Nobody");
 	return;
-
-	WipeGameMode();
 }
 
 void PongGameMode::WipeGameMode()
@@ -95,5 +107,6 @@ void PongGameMode::WipeGameMode()
 	delete player1;
 	delete player2;
 
+	delete winner;
 }
 

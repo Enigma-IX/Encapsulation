@@ -2,19 +2,10 @@
 
 #include <iostream>
 #include "framework.h"
-#include "config.h"
 
-#include "TimeManager.h"
-
-#include "SDLText.h"
-#include "RaylibText.h"
-#include "Ball.h"
-#include "FPSCounter.h"
 #include "InputManager.h"
-#include "Player.h"
-
-//#include "GameMode.h"
-//#include "DemoGameMode.h"
+#include "GameMode.h"
+#include "DemoGameMode.h"
 
 
 class GameManager
@@ -22,22 +13,22 @@ class GameManager
 private:
 	static GameManager* instance;  // Singleton instance
 
-	CurrentWindow window;
-	Ball* ball;
-	FPSCounter* fpsCounter;
 	InputManager* inputManager;
+	Window* window;
+	GameMode* gameMode;
 
-	Player* player1; // Joueur 1
-	Player* player2; // Joueur 2
+	GameManager(); // Constructeur privï¿½
 
-	GameManager(); // Constructeur privé
+	const char* title;
 
 public:
 	// Singleton instance
 	static GameManager& Instance();
 
-	void SelectGameMode();
-	void InitGame();
+	bool SetWindowType(int argc, char* argv[]);
+
+	void SelectGameMode(int gameType);
+	void InitGame(int argc, char* argv[]);
 	void StartMainLoop();
 	void Update();
 	void CheckCollisions();
@@ -45,8 +36,8 @@ public:
 	void EndGame();
 	void WipeGame();
 
-	CurrentWindow* getWindow();
 	InputManager* getInputManager();
+	Window* getWindow();
 
 	~GameManager();
 };

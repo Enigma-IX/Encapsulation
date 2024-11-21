@@ -426,6 +426,7 @@
     <ClCompile Include="RaylibText.cpp" />
     <ClCompile Include="RaylibWindow.cpp" />
     <ClCompile Include="SDLInputManager.cpp" />
+    <ClCompile Include="ScoreCounter.cpp" />
     <ClCompile Include="SDLSprite.cpp" />
     <ClCompile Include="SDLText.cpp" />
     <ClCompile Include="SDLWindow.cpp" />
@@ -449,6 +450,7 @@
     <ClInclude Include="RaylibText.h" />
     <ClInclude Include="RaylibWindow.h" />
     <ClInclude Include="SDLInputManager.h" />
+    <ClInclude Include="ScoreCounter.h" />
     <ClInclude Include="SDLSprite.h" />
     <ClInclude Include="SDLText.h" />
     <ClInclude Include="SDLWindow.h" />

@@ -2,19 +2,19 @@
 #include "Text.h"
 #include "Window.h"
 
-class FPSCounter
+class ScoreCounter
 {
 public:
-	FPSCounter();
+	ScoreCounter();
 	void Init();
-	~FPSCounter();
+	~ScoreCounter();
 
 	void Update();
 	void Draw();
 
 private:
-	Text* fpsText;
-	double FPS;
+	Text* scoreText;
+	double score;
 	double elapsedTime;
 };
 

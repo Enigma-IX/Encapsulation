@@ -13,11 +13,11 @@ PongGameMode::~PongGameMode()
 bool PongGameMode::InitGameMode()
 {
 	fpsCounter = new FPSCounter();
-	ball = new Ball();
 	timer = new GameTimer(WIN_WIDTH / 2, 0);
 
 	scoreCounterP1 = new ScoreCounter(WIN_WIDTH / 4, WIN_HEIGHT - 50);
 	scoreCounterP2 = new ScoreCounter(3 * WIN_WIDTH / 4, WIN_HEIGHT - 50);
+	ball = new Ball(WIN_WIDTH / 2, WIN_HEIGHT / 2);
 
 	player1 = new Player(1, WIN_WIDTH - 70.0f, WIN_HEIGHT / 2 - 50.0f);
 	player2 = new Player(2, 50.0f, WIN_HEIGHT / 2 - 50.0f);
@@ -54,14 +54,16 @@ void PongGameMode::Draw()
 
 void PongGameMode::CheckCollision()
 {
-	if (ball->CheckCollisionWithPlayer(player1)) 
-	{
+	if (ball->CheckCollisionWithPlayer(player1) || ball->CheckCollisionWithPlayer(player2)) {
 		ball->InvertDirectionX();
 	}
 
-	if (ball->CheckCollisionWithPlayer(player2)) 
-{
-		ball->InvertDirectionX();
+	if (ball->CheckCollisionWithLeftWall() || ball->CheckCollisionWithRightWall()) {
+		// TODO : Logique pour marquer un point ou réinitialiser la balle
+	}
+
+	if (ball->CheckCollisionWithTopOrBottomWall()) {
+		ball->InvertDirectionY();
 	}
 }
 

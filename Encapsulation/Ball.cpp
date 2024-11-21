@@ -3,21 +3,25 @@
 #include "Sprite.h"
 #include "GameManager.h"
 
-Ball::Ball() : radius(20.0f), dirX(WIN_WIDTH / 2), dirY(WIN_HEIGHT / 2) {
+#include <random>
+
+Ball::Ball(int posX, int posY) : radius(20.0f), dirX(0), dirY(0), speed(600){
     
     spriteBall = GameManager::Instance().getWindow()->createSprite();
-    Init();
+    Init(posX, posY);
 }
 
-void Ball::Init()
+void Ball::Init(int posX, int posY)
 {
+    SetRandomDirection();
+
     if (!spriteBall->LoadImage("ball.png")) {
         std::cerr << "Failed to load sprite image!" << std::endl;
         delete spriteBall;
         return;
     }
     spriteBall->SetSize(radius * 2, radius * 2);
-    spriteBall->SetPosition(dirX, dirY);
+    spriteBall->SetPosition(posX, posY);
 }
 
 Ball::~Ball()
@@ -34,10 +38,30 @@ void Ball::Update()
     x += dirX * TimeManager::Instance().GetDeltaTime();
     y += dirY * TimeManager::Instance().GetDeltaTime();
 
-    if (x < 0 || x + spriteBall->GetSize().first > WIN_WIDTH) dirX = -dirX;
-    if (y < 0 || y + spriteBall->GetSize().second > WIN_HEIGHT) dirY = -dirY;
-
     spriteBall->SetPosition(x, y);
+}
+
+bool Ball::CheckCollisionWithLeftWall()
+{
+    std::pair<float, float> position = spriteBall->GetPosition();
+    float x = position.first;
+    return (x <= 0);
+}
+
+bool Ball::CheckCollisionWithRightWall()
+{
+    std::pair<float, float> position = spriteBall->GetPosition();
+    float x = position.first + spriteBall->GetSize().first;
+    return (x >= WIN_WIDTH);
+}
+
+
+bool Ball::CheckCollisionWithTopOrBottomWall()
+{
+    std::pair<float, float> position = spriteBall->GetPosition();
+    float y = position.second;
+
+    return (y <= 0 || y + spriteBall->GetSize().second >= WIN_HEIGHT);
 }
 
 bool Ball::CheckCollisionWithPlayer(Player* player) {
@@ -51,15 +75,35 @@ bool Ball::CheckCollisionWithPlayer(Player* player) {
     float playerX = playerPosition.first;
     float playerY = playerPosition.second;
 
-    // Vérifie si la balle est dans la zone horizontale et verticale du joueur
+    // Vï¿½rifie si la balle est dans la zone horizontale et verticale du joueur
     bool collisionX = ballX + ballDiameter > playerX && ballX < playerX + player->GetWidth();
     bool collisionY = ballY + ballDiameter > playerY && ballY < playerY + player->GetHeight();
 
     return collisionX && collisionY;
 }
 
+
+
+void Ball::SetRandomDirection() {
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_real_distribution<> distr(-1.0, 1.0);
+
+	float randomX = distr(gen);
+	float randomY = distr(gen);
+
+	float magnitude = std::sqrt(randomX * randomX + randomY * randomY);
+	dirX = (randomX / magnitude) * speed;
+	dirY = (randomY / magnitude) * speed;
+}
+
 void Ball::InvertDirectionX() {
     dirX = -dirX;
+}
+
+void Ball::InvertDirectionY()
+{
+    dirY = -dirY;
 }
 
 void Ball::Draw() const

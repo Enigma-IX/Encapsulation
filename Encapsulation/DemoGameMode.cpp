@@ -13,8 +13,9 @@ DemoGameMode::~DemoGameMode()
 bool DemoGameMode::InitGameMode()
 {
 	fpsCounter = new FPSCounter();
-	ball = new Ball();
 	scoreCounter = new ScoreCounter(WIN_WIDTH / 4, WIN_HEIGHT);
+	ball = new Ball(WIN_WIDTH / 2, WIN_HEIGHT / 2);
+  
 	return true;
 }
 
@@ -34,7 +35,13 @@ void DemoGameMode::Draw()
 
 void DemoGameMode::CheckCollision()
 {
+	if (ball->CheckCollisionWithLeftWall() || ball->CheckCollisionWithRightWall()) {
+		ball->InvertDirectionX();
+	}
 
+	if (ball->CheckCollisionWithTopOrBottomWall()) {
+		ball->InvertDirectionY();
+	}
 }
 
 void DemoGameMode::EndGameMode()

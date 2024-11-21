@@ -84,8 +84,8 @@ void Player::Update() {
     }
 
     if (x < 0) x = 0;
-    if (x + spritePlayer->GetSize().second > WIN_WIDTH) {
-        x = WIN_WIDTH - spritePlayer->GetSize().second;
+    if (x + spritePlayer->GetSize().first > WIN_WIDTH) {  // Correction pour la largeur
+        x = WIN_WIDTH - spritePlayer->GetSize().first;
     }
 
     spritePlayer->SetPosition(x, y);

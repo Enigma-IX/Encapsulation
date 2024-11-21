@@ -11,5 +11,5 @@ using CurrentWindow = RaylibWindow;
 #define TITLE "Raylib"
 #else
 using CurrentWindow = RaylibWindow;
-#define TITLE "DEFAULT is Raylib, please use Debug-Raylib or Debug-SDL"
+#define TITLE "DEFAULT is Raylib, please use Raylib or SDL argument"
 #endif

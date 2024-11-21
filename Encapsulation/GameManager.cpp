@@ -15,6 +15,48 @@ GameManager& GameManager::Instance() {
 	return *instance;
 }
 
+bool GameManager::SetWindowType(int argc, char* argv[])
+{
+	bool useRuntime = false;
+	#if defined(USE_SDL)
+		std::cout << "Compiled with SDL by default." << std::endl;
+		window = new SDLWindow;
+		title = "SDL (compilation)";
+	#elif defined(USE_RAYLIB)
+		std::cout << "Compiled with Raylib by default." << std::endl;
+		window = new RaylibWindow;
+		title = "Raylib (compilation)";
+	#else
+		useRuntime = true;
+	#endif
+
+	// Override la compilation avec un argument runtime
+	if (argc > 1) {
+		std::string windowType = argv[1];
+		if (windowType == "-SDL") {
+			std::cout << "Runtime override: Using SDL" << std::endl;
+			delete window;
+			window = new SDLWindow;
+			title = "SDL (runtime)";
+		}
+		else if (windowType == "-Raylib") {
+			std::cout << "Runtime override: Using Raylib" << std::endl;
+			delete window;
+			window = new RaylibWindow;
+			title = "Raylib (runtime)";
+		}
+		else {
+			std::cerr << "Invalid argument(s). Valid options are: -SDL or -Raylib" << std::endl;
+			return false;
+		}
+	}
+	else if (useRuntime) {
+		window = new RaylibWindow;
+		title = "DEFAULT is Raylib (runtime)";
+	}
+	return true;
+}
+
 void GameManager::SelectGameMode(int gameType)
 {
 	if (gameMode) {
@@ -39,9 +81,12 @@ void GameManager::SelectGameMode(int gameType)
 	}	
 }
 
-void GameManager::InitGame()
+void GameManager::InitGame(int argc, char* argv[])
 {	
-	if (!window.initialize() || !window.createWindow(WIN_WIDTH, WIN_HEIGHT, TITLE)) {
+	if (!SetWindowType(argc, argv))
+		return;
+
+	if (!window->initialize() || !window->createWindow(WIN_WIDTH, WIN_HEIGHT, title)) {
 		std::cerr << "Failed to initialize window!" << std::endl;
 		return;
 	}
@@ -53,7 +98,7 @@ void GameManager::InitGame()
 void GameManager::StartMainLoop()
 {
 	SDL_Event event; // Input Manager
-	while (window.isOpen()) {
+	while (window->isOpen()) {
 
 		// Input Manager
 		SDL_PollEvent(&event);
@@ -78,11 +123,11 @@ void GameManager::Update()
 
 void GameManager::Draw()
 {
-	window.clear();
+	window->clear();
 
 	gameMode->Draw();
 	
-	window.display();
+	window->display();
 }
 
 void GameManager::EndGame()
@@ -94,13 +139,13 @@ void GameManager::EndGame()
 void GameManager::WipeGame()
 {
 	EndGame();
-	window.close();
+	window->close();
 }
 
 
-CurrentWindow* GameManager::getWindow()
+Window* GameManager::getWindow()
 {
-	return &window;
+	return window;
 }
 
 GameManager::~GameManager()

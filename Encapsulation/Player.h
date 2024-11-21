@@ -6,7 +6,7 @@ public:
     Player(int userId, float startX, float startY, bool isVertical); // Position initiale minimale
     ~Player();
 
-    void Init(float startX, float startY, bool isVertical);
+    void Init(float startX, float startY);
     void Update();
     void Draw() const;
 

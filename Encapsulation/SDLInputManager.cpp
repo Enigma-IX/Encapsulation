@@ -30,6 +30,8 @@ void SDLInputManager::Update() {
         user2Keys[1] = state[SDL_SCANCODE_S];     // Bas
         user2Keys[2] = state[SDL_SCANCODE_Q];     // Gauche
         user2Keys[3] = state[SDL_SCANCODE_D];     // Droite
+
+        spacePressed = state[SDL_SCANCODE_SPACE];
     }
 }
 

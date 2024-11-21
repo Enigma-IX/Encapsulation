@@ -68,10 +68,13 @@ void Player::Update() {
     else if (!isVertical)
     {
         if (inputManager->IsKeyPressed(userId, 'l')) {
-            y -= speed * deltaTime;
+            x -= speed * deltaTime;
         }
         if (inputManager->IsKeyPressed(userId, 'r')) {
-            y += speed * deltaTime;
+            x += speed * deltaTime;
+        }
+        if (inputManager->IsSpacePressed()) {
+            // TODO : lacement vers le haut
         }
     }
     

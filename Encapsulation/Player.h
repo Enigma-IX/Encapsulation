@@ -18,8 +18,8 @@ public:
 
 private:
     Sprite* spritePlayer;
-    int userId;               // Identifiant du joueur
-    float speed;              // Vitesse de déplacement
+    int userId;      
+    float speed;  
 
     static constexpr float DEFAULT_WIDTH = 20.0f;  // Largeur par défaut
     static constexpr float DEFAULT_HEIGHT = 100.0f; // Hauteur par défaut

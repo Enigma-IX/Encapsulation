@@ -10,11 +10,6 @@ SDLInputManager::~SDLInputManager()
 }
 
 void SDLInputManager::Update() {
-    // Réinitialisation des touches
-    for (int i = 0; i < 4; ++i) {
-        user1Keys[i] = false;
-        user2Keys[i] = false;
-    }
 
     while (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {
@@ -22,25 +17,19 @@ void SDLInputManager::Update() {
             return;
         }
 
-        if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP) {
-            bool isPressed = (event.type == SDL_KEYDOWN);
+        const Uint8* state = SDL_GetKeyboardState(nullptr);
 
-            // Joueur 1
-            switch (event.key.keysym.sym) {
-            case SDLK_UP:    user1Keys[0] = isPressed; break; // Haut
-            case SDLK_DOWN:  user1Keys[1] = isPressed; break; // Bas
-            case SDLK_LEFT:  user1Keys[2] = isPressed; break; // Gauche
-            case SDLK_RIGHT: user1Keys[3] = isPressed; break; // Droite
-            }
+        // Joueur 1 (flèches directionnelles)
+        user1Keys[0] = state[SDL_SCANCODE_UP];    // Haut
+        user1Keys[1] = state[SDL_SCANCODE_DOWN];  // Bas
+        user1Keys[2] = state[SDL_SCANCODE_LEFT];  // Gauche
+        user1Keys[3] = state[SDL_SCANCODE_RIGHT]; // Droite
 
-            // Joueur 2
-            switch (event.key.keysym.sym) {
-            case SDLK_z: user2Keys[0] = isPressed; break; // Haut
-            case SDLK_s: user2Keys[1] = isPressed; break; // Bas
-            case SDLK_q: user2Keys[2] = isPressed; break; // Gauche
-            case SDLK_d: user2Keys[3] = isPressed; break; // Droite
-            }
-        }
+        // Joueur 2 (z, s, q, d)
+        user2Keys[0] = state[SDL_SCANCODE_W];     // Haut
+        user2Keys[1] = state[SDL_SCANCODE_S];     // Bas
+        user2Keys[2] = state[SDL_SCANCODE_Q];     // Gauche
+        user2Keys[3] = state[SDL_SCANCODE_D];     // Droite
     }
 }
 

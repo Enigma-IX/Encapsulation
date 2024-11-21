@@ -118,6 +118,7 @@ void GameManager::Update()
 
 void GameManager::Draw()
 {
+
 	window->clear();
 	
 	CheckCollisions();

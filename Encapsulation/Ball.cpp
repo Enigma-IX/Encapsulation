@@ -38,10 +38,30 @@ void Ball::Update()
     x += dirX * TimeManager::Instance().GetDeltaTime();
     y += dirY * TimeManager::Instance().GetDeltaTime();
 
-    if (x < 0 || x + spriteBall->GetSize().first > WIN_WIDTH) dirX = -dirX;
-    if (y < 0 || y + spriteBall->GetSize().second > WIN_HEIGHT) dirY = -dirY;
-
     spriteBall->SetPosition(x, y);
+}
+
+bool Ball::CheckCollisionWithLeftWall()
+{
+    std::pair<float, float> position = spriteBall->GetPosition();
+    float x = position.first;
+    return (x <= 0);
+}
+
+bool Ball::CheckCollisionWithRightWall()
+{
+    std::pair<float, float> position = spriteBall->GetPosition();
+    float x = position.first + spriteBall->GetSize().first;
+    return (x >= WIN_WIDTH);
+}
+
+
+bool Ball::CheckCollisionWithTopOrBottomWall()
+{
+    std::pair<float, float> position = spriteBall->GetPosition();
+    float y = position.second;
+
+    return (y <= 0 || y + spriteBall->GetSize().second >= WIN_HEIGHT);
 }
 
 bool Ball::CheckCollisionWithPlayer(Player* player) {
@@ -55,16 +75,14 @@ bool Ball::CheckCollisionWithPlayer(Player* player) {
     float playerX = playerPosition.first;
     float playerY = playerPosition.second;
 
-    // Vérifie si la balle est dans la zone horizontale et verticale du joueur
+    // Vï¿½rifie si la balle est dans la zone horizontale et verticale du joueur
     bool collisionX = ballX + ballDiameter > playerX && ballX < playerX + player->GetWidth();
     bool collisionY = ballY + ballDiameter > playerY && ballY < playerY + player->GetHeight();
 
     return collisionX && collisionY;
 }
 
-void Ball::InvertDirectionX() {
-    dirX = -dirX;
-}
+
 
 void Ball::SetRandomDirection() {
 	std::random_device rd;
@@ -79,6 +97,14 @@ void Ball::SetRandomDirection() {
 	dirY = (randomY / magnitude) * speed;
 }
 
+void Ball::InvertDirectionX() {
+    dirX = -dirX;
+}
+
+void Ball::InvertDirectionY()
+{
+    dirY = -dirY;
+}
 
 void Ball::Draw() const
 {

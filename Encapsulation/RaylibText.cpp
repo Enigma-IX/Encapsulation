@@ -30,3 +30,12 @@ void RaylibText::render() const {
 	DrawTextEx(font, loadedText.c_str(), { static_cast<float>(x), static_cast<float>(y) },
 		font.baseSize, 2, color);
 }
+
+std::pair<int, int> RaylibText::getSize() const {
+	if (loadedText.empty()) {
+		throw std::runtime_error("Aucun texte chargé pour obtenir la taille.");
+	}
+	Vector2 size = MeasureTextEx(font, loadedText.c_str(), font.baseSize, 2);
+	return { static_cast<int>(size.x), static_cast<int>(size.y) };
+}
+

@@ -106,16 +106,21 @@ make USE_RAYLIB=1
 Run the program with the desired encapsulation:
 
 ```bash
+# Exemples:
+
 # Use SDL encapsulation
 ./encapsulation -SDL
 
 # Use Raylib encapsulation
 ./encapsulation -Raylib
+
+# Use Raylib encapsulation and Launch Pong game mode
+./encapsulation -Raylib -Pong
 ```
 
 Arguments:
 - `-SDL`: Use SDL for graphics rendering.
-- `--Raylib`: Use Raylib for graphics rendering.
+- `-Raylib`: Use Raylib for graphics rendering.
 
 - `-Demo`: Launch the Demo.
 - `-Pong`: Launch the Pong Game.

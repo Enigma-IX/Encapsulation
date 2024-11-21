@@ -115,7 +115,7 @@ Run the program with the desired encapsulation:
 ./encapsulation -Raylib
 
 # Use Raylib encapsulation and Launch Pong game mode
-./encapsulation -Raylib -Pong
+./encapsulation -Raylib -Mode=PONG
 ```
 
 Arguments:

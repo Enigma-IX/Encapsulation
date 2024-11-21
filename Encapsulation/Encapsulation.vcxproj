@@ -437,6 +437,7 @@
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Winner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
@@ -464,6 +465,7 @@
     <ClInclude Include="Text.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="Winner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

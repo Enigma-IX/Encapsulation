@@ -21,4 +21,6 @@ public:
 
     virtual void drawSprite(const Sprite& sprite) = 0;
     virtual Sprite* createSprite() = 0; 
+
+    virtual InputManager* createInputManager() = 0;
 };

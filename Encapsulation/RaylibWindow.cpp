@@ -1,5 +1,6 @@
 #include "RaylibWindow.h"
 #include "RaylibSprite.h"
+#include "RaylibInputManager.h"
 #include <iostream>
 
 #include "RaylibText.h"
@@ -63,5 +64,8 @@ void RaylibWindow::drawSprite(const Sprite& sprite) {
 
 Sprite* RaylibWindow::createSprite() {
     return new RaylibSprite();
+}
 
+InputManager* RaylibWindow::createInputManager() {
+    return new SDLInputManager();
 }

@@ -1,5 +1,6 @@
 #include "SDLWindow.h"
 #include "SDLSprite.h"
+#include "SDLInputManager.h"
 #include <iostream>
 
 #include "SDLText.h"
@@ -67,4 +68,8 @@ void SDLWindow::drawSprite(const Sprite& sprite) {
 Sprite* SDLWindow::createSprite() {
     return new SDLSprite(renderer);
 
+}
+
+InputManager* SDLWindow::createInputManager() {
+    return new SDLInputManager(); 
 }

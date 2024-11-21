@@ -10,6 +10,8 @@
 #include "RaylibText.h"
 #include "Ball.h"
 #include "FPSCounter.h"
+#include "InputManager.h"
+#include "Player.h"
 
 //#include "GameMode.h"
 //#include "DemoGameMode.h"
@@ -23,6 +25,10 @@ private:
 	CurrentWindow window;
 	Ball* ball;
 	FPSCounter* fpsCounter;
+	InputManager* inputManager;
+
+	Player* player1; // Joueur 1
+	Player* player2; // Joueur 2
 
 	GameManager(); // Constructeur privé
 
@@ -39,6 +45,7 @@ public:
 	void WipeGame();
 
 	CurrentWindow* getWindow();
+	InputManager* getInputManager();
 
 	~GameManager();
 };

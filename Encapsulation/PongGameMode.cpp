@@ -21,8 +21,8 @@ bool PongGameMode::InitGameMode()
 
 	ball = new Ball(WIN_WIDTH / 2, WIN_HEIGHT / 2);
 
-	player1 = new Player(1, WIN_WIDTH - 70.0f, WIN_HEIGHT / 2 - 50.0f);
-	player2 = new Player(2, 50.0f, WIN_HEIGHT / 2 - 50.0f);
+	player1 = new Player(1, WIN_WIDTH - 70.0f, WIN_HEIGHT / 2 - 50.0f, true);
+	player2 = new Player(2, 50.0f, WIN_HEIGHT / 2 - 50.0f, true);
 
 	winner = new Winner(WIN_WIDTH / 2, 2 * WIN_HEIGHT / 3);
 
@@ -78,7 +78,7 @@ void PongGameMode::CheckCollision()
 		scoreCounterP2->AddToScore(1);
 	}	
 
-	if (ball->CheckCollisionWithTopOrBottomWall()) {
+	if (ball->CheckCollisionWithTopWall() || ball->CheckCollisionWithBottomWall()) {
 		ball->InvertDirectionY();
 	}
 }

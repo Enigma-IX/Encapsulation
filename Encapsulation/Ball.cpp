@@ -67,47 +67,60 @@ bool Ball::CheckCollisionWithRightWall()
     return (x >= WIN_WIDTH);
 }
 
-
-bool Ball::CheckCollisionWithTopOrBottomWall()
+bool Ball::CheckCollisionWithTopWall()
 {
     std::pair<float, float> position = spriteBall->GetPosition();
     float y = position.second;
 
-    return (y <= 0 || y + spriteBall->GetSize().second >= WIN_HEIGHT);
+    return (y <= 0); // Collision avec le haut
+}
+
+bool Ball::CheckCollisionWithBottomWall()
+{
+    std::pair<float, float> position = spriteBall->GetPosition();
+    float y = position.second + spriteBall->GetSize().second;
+
+    return (y >= WIN_HEIGHT); // Collision avec le bas
 }
 
 bool Ball::CheckCollisionWithPlayer(Player* player) {
-    std::pair<float, float> ballPosition = spriteBall->GetPosition();
-    std::pair<float, float> playerPosition(player->GetX(), player->GetY());
+	std::pair<float, float> ballPosition = spriteBall->GetPosition();
+	float ballX = ballPosition.first;
+	float ballY = ballPosition.second;
+	float ballDiameter = radius * 2;
 
-    float ballX = ballPosition.first;
-    float ballY = ballPosition.second;
-    float ballDiameter = radius * 2;
+	std::pair<float, float> playerPosition(player->GetX(), player->GetY());
+	float playerX = playerPosition.first;
+	float playerY = playerPosition.second;
+	float playerWidth = player->GetWidth();
+	float playerHeight = player->GetHeight();
 
-    float playerX = playerPosition.first;
-    float playerY = playerPosition.second;
-    float playerWidth = player->GetWidth();
-    float playerHeight = player->GetHeight();
+	bool collisionX = ballX + ballDiameter > playerX && ballX < playerX + playerWidth;
+	bool collisionY = ballY + ballDiameter > playerY && ballY < playerY + playerHeight;
 
-    bool collisionX = ballX + ballDiameter > playerX && ballX < playerX + player->GetWidth();
-    bool collisionY = ballY + ballDiameter > playerY && ballY < playerY + player->GetHeight();
+	if (collisionX && collisionY) {
+		if (playerWidth > playerHeight) {
+			if (ballY + ballDiameter / 2 < playerY + playerHeight / 2) {
+				spriteBall->SetPosition(ballX, playerY - ballDiameter);
+			}
+			else {
+				spriteBall->SetPosition(ballX, playerY + playerHeight);
+			}
+		}
+		else {
+			if (ballX + ballDiameter / 2 < playerX + playerWidth / 2) {
+				spriteBall->SetPosition(playerX - ballDiameter, ballY);
+			}
+			else {
+				spriteBall->SetPosition(playerX + playerWidth, ballY);
+			}
+		}
+		return true;
+	}
 
-    if (collisionX && collisionY) {
-        // Gérer les collisions latérales (droite/gauche)
-        if (ballX + ballDiameter / 2 < playerX + playerWidth / 2) {
-            // Collision à gauche du joueur
-            spriteBall->SetPosition(playerX - ballDiameter, ballY);
-        }
-        else {
-            // Collision à droite du joueur
-            spriteBall->SetPosition(playerX + playerWidth, ballY);
-        }
-
-        return true;
-    }
-
-    return false;
+	return false;
 }
+
 
 
 
@@ -116,7 +129,8 @@ void Ball::SetRandomDirection() {
 	std::mt19937 gen(rd());
 	std::uniform_real_distribution<> angleDistr(0.0, 2.0 * M_PI);
 
-	const int maxAttempts = 100; // Nombre maximum de tentatives
+    // Nombre maximum de tentatives
+	const int maxAttempts = 100; 
 	int attempts = 0;
 	float angle;
 
@@ -125,7 +139,6 @@ void Ball::SetRandomDirection() {
 		attempts++;
 	} while ((std::fabs(std::cos(angle)) > 0.9 || std::fabs(std::sin(angle)) > 0.9) && attempts < maxAttempts); // Evite les angles de - de 10°
 
-	// Si toutes les tentatives échouent, utilise une direction par défaut
 	if (attempts == maxAttempts) {
 		angle = M_PI / 4.0;
 	}
@@ -156,6 +169,11 @@ void Ball::Stop()
 	dirY = 0;
 	dirX = 0;
 	spriteBall->SetPosition(startPosX, startPosY);
+}
+
+Sprite* Ball::GetSprite()
+{
+	return spriteBall;
 }
 
 void Ball::Draw() const

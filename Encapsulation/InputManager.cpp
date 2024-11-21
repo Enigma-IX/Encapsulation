@@ -26,3 +26,7 @@ bool InputManager::IsKeyPressed(int user, char key) const {
     }
     return false;
 }
+
+bool InputManager::IsSpacePressed() const {
+    return spacePressed;
+}

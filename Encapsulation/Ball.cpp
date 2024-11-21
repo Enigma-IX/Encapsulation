@@ -123,7 +123,8 @@ void Ball::SetRandomDirection() {
 	std::mt19937 gen(rd());
 	std::uniform_real_distribution<> angleDistr(0.0, 2.0 * M_PI);
 
-	const int maxAttempts = 100; // Nombre maximum de tentatives
+    // Nombre maximum de tentatives
+	const int maxAttempts = 100; 
 	int attempts = 0;
 	float angle;
 
@@ -132,7 +133,6 @@ void Ball::SetRandomDirection() {
 		attempts++;
 	} while ((std::fabs(std::cos(angle)) > 0.9 || std::fabs(std::sin(angle)) > 0.9) && attempts < maxAttempts); // Evite les angles de - de 10°
 
-	// Si toutes les tentatives échouent, utilise une direction par défaut
 	if (attempts == maxAttempts) {
 		angle = M_PI / 4.0;
 	}

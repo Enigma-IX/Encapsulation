@@ -122,9 +122,9 @@ Arguments:
 - `-SDL`: Use SDL for graphics rendering.
 - `-Raylib`: Use Raylib for graphics rendering.
 
-- `-Demo`: Launch the Demo.
-- `-Pong`: Launch the Pong Game.
-- `-Brick`: Launch the Brick Game.
+- `-Mode=DEMO`: Launch the Demo.
+- `-Mode=PONG`: Launch the Pong Game.
+- `-Mode=BRICK`: Launch the Brick Game.
 
 ---
 

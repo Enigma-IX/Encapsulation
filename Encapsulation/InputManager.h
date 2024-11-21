@@ -6,9 +6,12 @@ public:
 	virtual void Update() = 0;
 	bool IsKeyPressed(int user, char) const;
 
+	bool IsSpacePressed() const;
+
 protected:
 	InputManager();
 
 	bool user1Keys[4];
 	bool user2Keys[4];
+	bool spacePressed;
 };

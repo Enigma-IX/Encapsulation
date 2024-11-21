@@ -28,5 +28,7 @@ private:
 	float startPosX, startPosY;
 	float speed;
 	float radius;
-};
 
+	float stopTimer = 0; 
+	const float stopDuration = 0.5f;
+};

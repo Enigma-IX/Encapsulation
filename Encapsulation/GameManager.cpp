@@ -68,9 +68,23 @@ void GameManager::Draw()
 
 	ball->Draw();
 	fpsCounter->Draw();
+
+	CheckCollisions();
 	
 	window.display();
 }
+
+void GameManager::CheckCollisions() {
+
+	if (ball->CheckCollisionWithPlayer(player1)) {
+		ball->InvertDirectionX(); 
+	}
+
+	if (ball->CheckCollisionWithPlayer(player2)) {
+		ball->InvertDirectionX(); 
+	}
+}
+
 
 void GameManager::EndGame()
 {

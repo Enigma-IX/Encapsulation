@@ -40,6 +40,7 @@ public:
 	void InitGame();
 	void StartMainLoop();
 	void Update();
+	void CheckCollisions();
 	void Draw();
 	void EndGame();
 	void WipeGame();

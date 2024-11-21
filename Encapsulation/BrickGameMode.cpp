@@ -56,6 +56,11 @@ void BrickGameMode::CheckCollision()
 	{
 		ball->InvertDirectionX();
 	}
+
+	if (ball->CheckCollisionWithBottomWall())
+	{
+		ball->Reset();
+	}
 }
 
 void BrickGameMode::EndGameMode()

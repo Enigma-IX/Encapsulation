@@ -28,7 +28,7 @@ void FPSCounter::Update()
 {
 	elapsedTime += TimeManager::Instance().GetDeltaTime();
 
-	if (elapsedTime >= 1)
+	if (elapsedTime >= 0.5)
 	{
 		FPS = TimeManager::Instance().GetFrameRate();
 		elapsedTime = 0;

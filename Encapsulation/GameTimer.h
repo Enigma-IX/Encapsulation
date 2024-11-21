@@ -2,19 +2,23 @@
 #include "Text.h"
 #include "Window.h"
 
-class ScoreCounter
+
+class GameTimer
 {
 public:
-	ScoreCounter(float posX, float posY);
+	GameTimer(float posX, float posY);
 	void Init(float posX, float posY);
-	~ScoreCounter();
+	~GameTimer();
 
 	void Update();
 	void Draw();
 
 private:
-	Text* scoreText;
-	double score;
+
+	int startTime;
+
+	Text* timerText;
+	double timer;
 	double elapsedTime;
 };
 

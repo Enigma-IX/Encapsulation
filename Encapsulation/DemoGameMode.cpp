@@ -13,8 +13,9 @@ DemoGameMode::~DemoGameMode()
 bool DemoGameMode::InitGameMode()
 {
 	fpsCounter = new FPSCounter();
+	scoreCounter = new ScoreCounter(WIN_WIDTH / 4, WIN_HEIGHT);
 	ball = new Ball(WIN_WIDTH / 2, WIN_HEIGHT / 2);
-	scoreCounter = new ScoreCounter();
+  
 	return true;
 }
 
@@ -44,6 +45,13 @@ void DemoGameMode::CheckCollision()
 }
 
 void DemoGameMode::EndGameMode()
+{
+	//TO DO: Logique de cleanup avant de Wipe
+
+	WipeGameMode();
+}
+
+void DemoGameMode::WipeGameMode()
 {
 	delete ball;
 	delete fpsCounter;

@@ -93,7 +93,7 @@ void GameManager::InitGame(int argc, char* argv[])
 	
 	inputManager = window->createInputManager();
  
-	SelectGameMode(GameMode::BRICK);
+	SelectGameMode(GameMode::PONG);
 	gameMode->InitGameMode();
 }
 

@@ -34,10 +34,30 @@ void Ball::Update()
     x += dirX * TimeManager::Instance().GetDeltaTime();
     y += dirY * TimeManager::Instance().GetDeltaTime();
 
-    if (x < 0 || x + spriteBall->GetSize().first > WIN_WIDTH) dirX = -dirX;
-    if (y < 0 || y + spriteBall->GetSize().second > WIN_HEIGHT) dirY = -dirY;
-
     spriteBall->SetPosition(x, y);
+}
+
+bool Ball::CheckCollisionWithLeftWall()
+{
+    std::pair<float, float> position = spriteBall->GetPosition();
+    float x = position.first;
+    return (x <= 0);
+}
+
+bool Ball::CheckCollisionWithRightWall()
+{
+    std::pair<float, float> position = spriteBall->GetPosition();
+    float x = position.first + spriteBall->GetSize().first;
+    return (x >= WIN_WIDTH);
+}
+
+
+bool Ball::CheckCollisionWithTopOrBottomWall()
+{
+    std::pair<float, float> position = spriteBall->GetPosition();
+    float y = position.second;
+
+    return (y <= 0 || y + spriteBall->GetSize().second >= WIN_HEIGHT);
 }
 
 bool Ball::CheckCollisionWithPlayer(Player* player) {
@@ -60,6 +80,11 @@ bool Ball::CheckCollisionWithPlayer(Player* player) {
 
 void Ball::InvertDirectionX() {
     dirX = -dirX;
+}
+
+void Ball::InvertDirectionY()
+{
+    dirY = -dirY;
 }
 
 void Ball::Draw() const

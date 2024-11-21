@@ -34,7 +34,13 @@ void DemoGameMode::Draw()
 
 void DemoGameMode::CheckCollision()
 {
+	if (ball->CheckCollisionWithLeftWall() || ball->CheckCollisionWithRightWall()) {
+		ball->InvertDirectionX();
+	}
 
+	if (ball->CheckCollisionWithTopOrBottomWall()) {
+		ball->InvertDirectionY();
+	}
 }
 
 void DemoGameMode::EndGameMode()

@@ -14,10 +14,6 @@ Welcome to **Encapsulation**, a C++ project aimed at mastering the fundamentals 
 3. [Requirements](#requirements)
 4. [Features](#features)
 5. [Usage](#usage)
-6. [Development Milestones](#development-milestones)
-7. [Evaluation Criteria](#evaluation-criteria)
-8. [Contributors](#contributors)
-9. [License](#license)
 
 ---
 
@@ -111,19 +107,19 @@ Run the program with the desired encapsulation:
 
 ```bash
 # Use SDL encapsulation
-./encapsulation --SDL
+./encapsulation -SDL
 
 # Use Raylib encapsulation
-./encapsulation --Raylib
+./encapsulation -Raylib
 ```
 
 Arguments:
-- `--SDL`: Use SDL for graphics rendering.
+- `-SDL`: Use SDL for graphics rendering.
 - `--Raylib`: Use Raylib for graphics rendering.
 
-- `--Demo`: Launch the Demo.
-- `--Pong`: Launch the Pong Game.
-- `--Brick`: Launch the Brick Game.
+- `-Demo`: Launch the Demo.
+- `-Pong`: Launch the Pong Game.
+- `-Brick`: Launch the Brick Game.
 
 ---
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "InputManager.h"
 
-class RaylibInputManager : InputManager
+class RaylibInputManager : public InputManager
 {
 public:
     RaylibInputManager();

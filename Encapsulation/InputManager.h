@@ -12,4 +12,3 @@ protected:
 	bool user1Keys[4];
 	bool user2Keys[4];
 };
-

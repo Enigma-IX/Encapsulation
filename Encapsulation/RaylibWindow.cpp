@@ -66,6 +66,7 @@ Sprite* RaylibWindow::createSprite() {
     return new RaylibSprite();
 }
 
-InputManager* RaylibWindow::createInputManager() {
-    return new SDLInputManager();
+InputManager* RaylibWindow::createInputManager()
+{
+    return new RaylibInputManager();
 }

@@ -4,6 +4,7 @@
 
 #include "Text.h"
 #include "Sprite.h"
+#include "InputManager.h"
 
 class Window {
 public:

@@ -6,17 +6,18 @@
 Player::Player(int userId, float startX, float startY)
     : userId(userId), speed(DEFAULT_SPEED) {
     spritePlayer = GameManager::Instance().getWindow()->createSprite();
-    spritePlayer->SetPosition(startX, startY);
-    spritePlayer->SetSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-    Init();
+    
+    Init(startX, startY);
 }
 
-void Player::Init() {
+void Player::Init(float startX, float startY) {
     if (!spritePlayer->LoadImage("player.png")) {
         std::cerr << "Failed to load Player image!" << std::endl;
         delete spritePlayer;
         spritePlayer = nullptr;
     }
+    spritePlayer->SetSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+    spritePlayer->SetPosition(startX, startY);
 }
 
 Player::~Player() {
@@ -29,13 +30,20 @@ void Player::Update() {
     float y = position.second;
 
     InputManager* inputManager = GameManager::Instance().getInputManager();
+    float deltaTime = TimeManager::Instance().GetDeltaTime();
 
-    // Déplacement basé sur les touches
-    if (inputManager->IsKeyPressed(userId, 'u')) { // Haut
-        y -= speed * TimeManager::Instance().GetDeltaTime();
+    // Déplacement en fonction des touches
+    if (inputManager->IsKeyPressed(userId, 'u')) { 
+        y -= speed * deltaTime;
     }
-    if (inputManager->IsKeyPressed(userId, 'd')) { // Bas
-        y += speed * TimeManager::Instance().GetDeltaTime();
+    if (inputManager->IsKeyPressed(userId, 'd')) { 
+        y += speed * deltaTime;
+    }
+    if (inputManager->IsKeyPressed(userId, 'z')) { 
+        y -= speed * deltaTime;
+    }
+    if (inputManager->IsKeyPressed(userId, 's')) { 
+        y += speed * deltaTime;
     }
 
     // Limitation des déplacements dans la fenêtre

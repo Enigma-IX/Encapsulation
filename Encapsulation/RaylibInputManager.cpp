@@ -18,7 +18,7 @@ void RaylibInputManager::Update() {
     user1Keys[3] = IsKeyDown(KEY_RIGHT); // Droite
 
     // User 2
-    user2Keys[0] = IsKeyDown(KEY_Z);     // Haut
+    user2Keys[0] = IsKeyDown(KEY_W);     // Haut
     user2Keys[1] = IsKeyDown(KEY_S);     // Bas
     user2Keys[2] = IsKeyDown(KEY_Q);     // Gauche
     user2Keys[3] = IsKeyDown(KEY_D);     // Droite

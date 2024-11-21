@@ -142,7 +142,8 @@ void Ball::Reset()
 
 void Ball::Stop()
 {
-    dirY, dirX = 0, 0;
+    dirY = 0;
+    dirX = 0;
 	spriteBall->SetPosition(startPosX, startPosY);
 }
 

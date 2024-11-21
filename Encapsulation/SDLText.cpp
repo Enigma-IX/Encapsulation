@@ -61,3 +61,10 @@ void SDLText::render() const {
 	}
 	SDL_RenderCopy(renderer, texture, nullptr, &rect);
 }
+
+std::pair<int, int> SDLText::getSize() const {
+	if (!texture) {
+		throw std::runtime_error("Aucun texte chargé pour obtenir la taille.");
+	}
+	return { rect.w, rect.h };
+}

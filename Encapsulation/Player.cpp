@@ -12,28 +12,26 @@ Player::Player(int userId, float startX, float startY, bool isVertical)
 }
 
 void Player::Init(float startX, float startY) {
-    if (isVertical)
+    
+    if (isVertical == true)
     {
         if (!spritePlayer->LoadImage("player.png")) {
             std::cerr << "Failed to load Player image!" << std::endl;
             delete spritePlayer;
             spritePlayer = nullptr;
         }
+        spritePlayer->SetSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     }
-    else if (!isVertical)
+    else if (isVertical == false)
     {
         if (!spritePlayer->LoadImage("player_hor.png")) {
             std::cerr << "Failed to load Player image!" << std::endl;
             delete spritePlayer;
             spritePlayer = nullptr;
         }
+        spritePlayer->SetSize(DEFAULT_HEIGHT+50, DEFAULT_WIDTH);
     }
-    if (!spritePlayer->LoadImage("player.png")) {
-        std::cerr << "Failed to load Player image!" << std::endl;
-        delete spritePlayer;
-        spritePlayer = nullptr;
-    }
-    spritePlayer->SetSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+
     spritePlayer->SetPosition(startX, startY);
 }
 
@@ -83,6 +81,11 @@ void Player::Update() {
     if (y < 0) y = 0;
     if (y + spritePlayer->GetSize().second > WIN_HEIGHT) {
         y = WIN_HEIGHT - spritePlayer->GetSize().second;
+    }
+
+    if (x < 0) x = 0;
+    if (x + spritePlayer->GetSize().second > WIN_WIDTH) {
+        x = WIN_WIDTH - spritePlayer->GetSize().second;
     }
 
     spritePlayer->SetPosition(x, y);

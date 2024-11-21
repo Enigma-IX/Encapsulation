@@ -67,13 +67,20 @@ bool Ball::CheckCollisionWithRightWall()
     return (x >= WIN_WIDTH);
 }
 
-
-bool Ball::CheckCollisionWithTopOrBottomWall()
+bool Ball::CheckCollisionWithTopWall()
 {
     std::pair<float, float> position = spriteBall->GetPosition();
     float y = position.second;
 
-    return (y <= 0 || y + spriteBall->GetSize().second >= WIN_HEIGHT);
+    return (y <= 0); // Collision avec le haut
+}
+
+bool Ball::CheckCollisionWithBottomWall()
+{
+    std::pair<float, float> position = spriteBall->GetPosition();
+    float y = position.second + spriteBall->GetSize().second;
+
+    return (y >= WIN_HEIGHT); // Collision avec le bas
 }
 
 bool Ball::CheckCollisionWithPlayer(Player* player) {

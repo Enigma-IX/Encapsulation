@@ -25,5 +25,5 @@ private:
     static constexpr float DEFAULT_HEIGHT = 105.0f;
     static constexpr float DEFAULT_SPEED = 600.0f;
 
-    static bool isVertical;
+    bool isVertical;
 };

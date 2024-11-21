@@ -13,7 +13,8 @@ public:
 	void Update();
 	bool CheckCollisionWithLeftWall();
 	bool CheckCollisionWithRightWall();
-	bool CheckCollisionWithTopOrBottomWall();
+	bool CheckCollisionWithTopWall();
+	bool CheckCollisionWithBottomWall();
 	void Draw() const;
 	bool CheckCollisionWithPlayer(Player* player);
 	void InvertDirectionX();

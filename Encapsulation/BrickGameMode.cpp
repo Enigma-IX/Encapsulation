@@ -16,7 +16,7 @@ bool BrickGameMode::InitGameMode()
 	scoreCounter = new ScoreCounter(WIN_WIDTH / 4, WIN_HEIGHT);
 	ball = new Ball(WIN_WIDTH / 2, WIN_HEIGHT / 2);
 
-	player1 = new Player(1, WIN_WIDTH - 70.0f, WIN_HEIGHT / 2 - 50.0f);
+	player1 = new Player(1, WIN_WIDTH / 2, WIN_HEIGHT - 50, false);
 
 	return true;
 }
@@ -44,10 +44,10 @@ void BrickGameMode::CheckCollision()
 {
 	if (ball->CheckCollisionWithPlayer(player1))
 	{
-		ball->InvertDirectionX();
+		ball->InvertDirectionY();
 	}
 
-	if (ball->CheckCollisionWithTopOrBottomWall()) {
+	if (ball->CheckCollisionWithTopWall() || ball->CheckCollisionWithBottomWall()) {
 		ball->InvertDirectionY();
 	}
 

@@ -39,7 +39,7 @@ void DemoGameMode::CheckCollision()
 		ball->InvertDirectionX();
 	}
 
-	if (ball->CheckCollisionWithTopOrBottomWall()) {
+	if (ball->CheckCollisionWithTopWall() || ball->CheckCollisionWithBottomWall()) {
 		ball->InvertDirectionY();
 	}
 }

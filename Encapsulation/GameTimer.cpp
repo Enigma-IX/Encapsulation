@@ -14,7 +14,7 @@ void GameTimer::Init(float posX, float posY, int duration)
 {
 	startTime = duration;
 
-	if (!timerText->loadFont("Montserrat-Regular.ttf", 18)) {
+	if (!timerText->loadFont("Montserrat-Regular.ttf", 28)) {
 		std::cerr << "Failed to load Font text Score!" << std::endl;
 		delete timerText;
 		return;

@@ -5,7 +5,7 @@
 
 #include <random>
 
-Ball::Ball(int posX, int posY) : radius(20.0f), dirX(0), dirY(0), speed(600){
+Ball::Ball(int posX, int posY) : radius(15.0f), dirX(0), dirY(0), speed(600){
     
     spriteBall = GameManager::Instance().getWindow()->createSprite();
     Init(posX, posY);

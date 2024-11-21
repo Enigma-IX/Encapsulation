@@ -80,11 +80,12 @@ void BrickGameMode::CheckCollision()
 		ball->InvertDirectionX();
 	}
 
+
 	if (ball->CheckCollisionWithBottomWall())
 	{
 		ball->Reset();
 	}
-
+  
 	for (auto brick : bricks) {
 		if (!brick->IsDestroyed() && brick->CheckCollisionWithBall(ball->GetSprite())) {
 			brick->Destroy();

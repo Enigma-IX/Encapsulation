@@ -78,12 +78,27 @@ bool Ball::CheckCollisionWithPlayer(Player* player) {
 
     float playerX = playerPosition.first;
     float playerY = playerPosition.second;
+    float playerWidth = player->GetWidth();
+    float playerHeight = player->GetHeight();
 
-    // V�rifie si la balle est dans la zone horizontale et verticale du joueur
     bool collisionX = ballX + ballDiameter > playerX && ballX < playerX + player->GetWidth();
     bool collisionY = ballY + ballDiameter > playerY && ballY < playerY + player->GetHeight();
 
-    return collisionX && collisionY;
+    if (collisionX && collisionY) {
+        // Gérer les collisions latérales (droite/gauche)
+        if (ballX + ballDiameter / 2 < playerX + playerWidth / 2) {
+            // Collision à gauche du joueur
+            spriteBall->SetPosition(playerX - ballDiameter, ballY);
+        }
+        else {
+            // Collision à droite du joueur
+            spriteBall->SetPosition(playerX + playerWidth, ballY);
+        }
+
+        return true;
+    }
+
+    return false;
 }
 
 

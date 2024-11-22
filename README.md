@@ -134,3 +134,6 @@ Arguments:
 
 ---
 
+**Retrospective**
+- [Link] (https://www.figma.com/board/a0Gg3rPuPuwlSCDNZJYNr6/Sailboat-Retro-(Community)?node-id=0-1&t=RDh6LcKP3nJvCtHf-1)
+

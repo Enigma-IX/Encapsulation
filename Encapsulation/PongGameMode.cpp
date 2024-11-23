@@ -82,10 +82,6 @@ void PongGameMode::CheckCollision()
 		ball->InvertDirectionY();
 	}
 
-	if (ball->CheckCollisionWithTopOrBottomWall()) {
-		ball->InvertDirectionY();
-	}
-
 }
 
 void PongGameMode::EndGameMode()
